@@ -2,6 +2,11 @@
     baseUrl: "scripts"
 })
 
-define(function () {
+define(["fileIO"], function (FileIO) {
     // App logic
+
+    loadFile.onchange = function () {
+        FileIO.loadFile(this, canvas);
+    };
+
 });
