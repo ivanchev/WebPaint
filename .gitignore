@@ -1,0 +1,14 @@
+*.dll
+*.tmp
+*.gpState
+*.pdb
+*.suo
+*.swp
+*.user
+*.mdb
+obj/
+!**/References/*.dll
+App_Data/PublishProfiles
+website.publishproj
+/node_modules
+plugins/KendoBootstrapper/KendoBootstrapper/bin
