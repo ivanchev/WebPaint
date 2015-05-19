@@ -14,9 +14,10 @@
     }
 
     function apply(imageData) {
-        // TODO width and height
         var context = canvas.getContext("2d");
 
+        canvas.width = imageData.width;
+        canvas.height = imageData.height;
         context.putImageData(imageData, 0, 0);
     }
 

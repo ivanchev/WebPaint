@@ -19,12 +19,18 @@
 
         canvas.style.transform = "scale(" + ratio + ")";
 
-        canvas.parentNode.style.width = canvas.width * ratio + "px";
-        canvas.parentNode.style.height = canvas.height * ratio + "px";
+        refreshZoomWrap();
 
         if (callback) {
             callback(zoomLevel);
         }
+    }
+
+    function refreshZoomWrap() {
+        var ratio = zoomLevel / 100;
+
+        canvas.parentNode.style.width = canvas.width * ratio + "px";
+        canvas.parentNode.style.height = canvas.height * ratio + "px";
     }
 
     function stepZoom(direction) {
@@ -70,6 +76,7 @@
         init: init,
         stepZoom: stepZoom,
         fitZoom: fitZoom,
-        applyZoom: applyZoom
+        applyZoom: applyZoom,
+        refreshZoomWrap: refreshZoomWrap
     };
 });
