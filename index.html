@@ -28,15 +28,22 @@
             </ul>
         </div>
 
+
         <div class="content-wrap">
-            <div class="toolbar-wrap">
+            <div class="toolbar-navigation-wrap">
                 <ul class="buttonsList">
+                    <li id="CancelButton"><span class="icon iconCancel"></span>Cancel</li>
+                    <li id="OKButton"><span class="icon iconOK"></span>OK</li>
+                </ul>
+            </div>
+            <div class="toolbar-wrap">
+                <ul id="toolsList" class="buttonsList">
                     <li id="transformButton"><span class="icon iconTransform"></span>Transform</li>
                     <li id="cropButton"><span class="icon iconCrop"></span>Crop</li>
                     <li id="filterButton"><span class="icon iconFilter"></span>Filter</li>
                     <li id="colorButton"><span class="icon iconColor"></span>Color</li>
                 </ul>
-                <ul id="transformList" style="display: block;" class="buttonsList buttonsListSecondary">
+                <ul id="transformList" style="display: none;" class="buttonsList buttonsListSecondary">
                     <li id="flipHorizontalButton"><span class="icon iconFlipHorizontal"></span>Flip Horizontal</li>
                     <li id="flipVerticalButton"><span class="icon iconflipVertical"></span>Flip Vertical</li>
                     <li id="rotate90Button"><span class="icon iconRotate90"></span>Rotate 90</li>
@@ -59,6 +66,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>

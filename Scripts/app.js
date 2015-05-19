@@ -60,7 +60,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom'], function (Fil
     flipVerticalButton.onclick = function() {
         applyTransform("flipVertical");
     };
-    
+
     rotate90Button.onclick = function() {
         applyTransform("rotate90");
     };
@@ -107,6 +107,72 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom'], function (Fil
 
     zoomFitButton.onclick = function() {
         Zoom.fitZoom();
+    };
+
+    //#endregion
+
+    //#region Toolbar
+
+    var imageData = null;
+    function activateTool() {
+        $(".body-wrap").addClass("activeTool");
+
+        var context = canvas.getContext("2d");
+        imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    }
+
+    function deactivateTool() {
+        $(".body-wrap").removeClass("activeTool");
+    }
+
+    OKButton.onclick = function() {
+        deactivateTool();
+    };
+
+    CancelButton.onclick = function() {
+        deactivateTool();
+
+        var context = canvas.getContext("2d");
+
+        canvas.width = imageData.width;
+        canvas.height = imageData.height;
+        context.putImageData(imageData, 0, 0);
+
+        Zoom.refreshZoomWrap();
+        Cache.store();
+
+        imageData = null;
+    };
+
+
+    transformButton.onclick = function() {
+        $(".buttonsListSecondary").hide();
+
+        activateTool();
+
+        $(transformList).show();
+    };
+
+    cropButton.onclick = function() {
+        $(".buttonsListSecondary").hide();
+
+        activateTool();
+    };
+
+    filterButton.onclick = function() {
+        $(".buttonsListSecondary").hide();
+
+        activateTool();
+
+        $(filterList).show();
+    };
+
+    colorButton.onclick = function() {
+        $(".buttonsListSecondary").hide();
+
+        activateTool();
+
+        $(colorList).show();
     };
 
     //#endregion
