@@ -2,7 +2,7 @@
     baseUrl: "scripts"
 })
 
-define(["fileIO", "filters", 'cache/cache'], function (FileIO, Filters, Cache) {
+define(["fileIO", "filters", 'cache/cache', 'zoom'], function (FileIO, Filters, Cache, Zoom) {
     // App logic
 
     //#region Helpers
@@ -12,8 +12,14 @@ define(["fileIO", "filters", 'cache/cache'], function (FileIO, Filters, Cache) {
         Cache.store();
     }
 
-    function initCache() {
+    function init() {
         Cache.init(canvas);
+
+        Zoom.init(canvas, zoomChanged);
+    }
+
+    function zoomChanged(zoomLevel) {
+        zoomList.children[1].textContent = zoomLevel + "%";
     }
 
     //#endregion
@@ -22,7 +28,7 @@ define(["fileIO", "filters", 'cache/cache'], function (FileIO, Filters, Cache) {
     //#region File IO
 
     loadFile.onchange = function () {
-        FileIO.loadFile(this, canvas, initCache);
+        FileIO.loadFile(this, canvas, init);
     };
 
     //#endregion
@@ -55,5 +61,23 @@ define(["fileIO", "filters", 'cache/cache'], function (FileIO, Filters, Cache) {
     };
 
     //#endregion
+
+    //#region Zoom
+
+    zoomOutButton.onclick = function() {
+        Zoom.stepZoom(-1);
+    };
+
+    zoomInButton.onclick = function() {
+        Zoom.stepZoom(1);
+    };
+
+    zoomFitButton.onclick = function() {
+        Zoom.fitZoom();
+    };
+
+    //#endregion
+
+    init();
 
 });
