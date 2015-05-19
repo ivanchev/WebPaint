@@ -7,21 +7,57 @@
 </head>
 <body>
 
-    <input type='file' id='loadFile' accept="image/*" style="width: 82px;" />
-    <br />
-    <button id="invertButton">Invert Colors</button>
-    <button id="grayscaleButton">Gray Colors</button>
-    <br />
-    <button id="undoButton">Undo</button>
-    <button id="redoButton">Redo</button>
-    <button id="resetButton">Reset</button>
+    <div class="body-wrap">
+        <div class="header-wrap">
+            <ul class="buttonsList">
+                <li id="uploadButton">
+                    <span class="icon iconUpload"></span>Upload
+                    <input type='file' id='loadFile' />
+                </li>
+            </ul>
+            <ul class="buttonsList">
+                <li id="undoButton"><span class="icon iconUndo"></span>Undo</li>
+                <li id="redoButton"><span class="icon iconRedo"></span>Redo</li>
+                <li id="resetButton"><span class="icon iconReset"></span>Reset</li>
+            </ul>
+            <ul id="zoomList" class="buttonsList">
+                <li id="zoomOutButton"><span class="icon iconZoomOut"></span></li>
+                <li>100%</li>
+                <li id="zoomInButton"><span class="icon iconZoomIn"></span></li>
+            </ul>
+        </div>
 
-    <div class="canvas-container">
-        <canvas id="canvas" width="200" height="200"></canvas>
+        <div class="content-wrap">
+            <div class="toolbar-wrap">
+                <ul class="buttonsList">
+                    <li id="transformButton"><span class="icon iconTransform"></span>Transform</li>
+                    <li id="cropButton"><span class="icon iconCrop"></span>Crop</li>
+                    <li id="filterButton"><span class="icon iconFilter"></span>Filter</li>
+                    <li id="colorButton"><span class="icon iconColor"></span>Color</li>
+                </ul>
+                <ul id="transformList" style="display: none;" class="buttonsList buttonsListSecondary">
+                    <li id="rotateButton"><span class="icon iconRotate"></span>Rotate</li>
+                    <li id="scaleButton"><span class="icon iconScale"></span>Scale</li>
+                </ul>
+                <ul id="filterList" style="display: none;" class="buttonsList buttonsListSecondary">
+                    <li id="invertButton"><span class="icon iconInvert"></span>Invert</li>
+                    <li id="grayscaleButton"><span class="icon iconGrayscale"></span>Gray</li>
+                </ul>
+                <ul id="colorList" style="display: none;" class="buttonsList buttonsListSecondary">
+                    <li id="brightenButton"><span class="icon iconBrighten"></span>Brighten</li>
+                    <li id="darkenButton"><span class="icon iconDarken"></span>Darken</li>
+                </ul>
+            </div>
+
+            <div class="canvas-wrap">
+                <div class="zoom-wrap" style="width: 200px; height: 200px;">
+                    <canvas id="canvas" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script data-main="Scripts/app" src="Scripts/lib/require.js"></script>
-
 </body>
 
 </html>
