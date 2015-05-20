@@ -1,65 +1,64 @@
-﻿html, body{
+﻿html, body {
     height: 100%;
 }
 
-body{
+body {
     margin: 0;
 }
 
-.body-wrap{
+.body-wrap {
     height: 100%;
 }
 
-.header-wrap{
+.header-wrap {
     position: relative;
     height: 70px;
-
     background-color: lightgreen;
 }
 
-.toolbar-navigation-wrap{
+.toolbar-navigation-wrap {
     height: 70px;
     z-index: 2;
     position: absolute;
     display: none;
 }
 
-.buttonsList{
+.buttonsList {
     list-style: none;
     padding: 0;
     float: left;
     margin: 10px;
 }
 
-    #zoomList{
-        float: right;
-    }
+#zoomList {
+    float: right;
+}
 
-    .buttonsList li{
-        cursor: pointer;
-        position: relative;
-        width: 50px;
-        height: 50px;
-        text-align:center;
-        overflow: hidden;
-    }
+.buttonsList li {
+    cursor: pointer;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    overflow: hidden;
+}
 
-    .header-wrap .buttonsList li{
-        display: inline-block;
-    }
+.header-wrap .buttonsList li {
+    display: inline-block;
+}
 
-        .buttonsList li#uploadButton input {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            z-index: 2;
-            cursor: pointer;
-        }
+.buttonsList li#uploadButton input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+}
 
-.icon{
+.icon {
     width: 32px;
     height: 32px;
     display: block;
@@ -67,14 +66,15 @@ body{
     background-image: url('Content/sprite_2x.png');
 }
 
-.iconUndo{
+.iconUndo {
     background-position: -128px -320px;
 }
-.iconRedo{
+
+.iconRedo {
     background-position: -128px -288px;
 }
 
-.content-wrap{
+.content-wrap {
     position: absolute;
     top: 70px;
     bottom: 0;
@@ -85,7 +85,6 @@ body{
     position: absolute;
     height: 100%;
     width: 140px;
-
     background-color: lightblue;
 }
 
@@ -96,46 +95,99 @@ body{
     right: 0;
     text-align: center;
     overflow: auto;
-
     background-color: lightgrey;
 }
 
-    .canvas-wrap .zoom-wrap{
+    .canvas-wrap .zoom-wrap {
         overflow: hidden;
         position: relative;
         text-align: initial;
         margin: auto;
-
         /*border: 1px solid red;*/
     }
 
     .canvas-wrap canvas {
         background-color: white;
         transform-origin: top left;
+        position: absolute;
     }
 
+.crop-box {
+    color: white;
+    position: absolute;
+    border: 1px dashed white;
+    width: 958px;
+    height: 538px;
+    z-index: 2;
+}
+
+.crop-dot {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    z-index: 3;
+    position: absolute;
+}
+
+.crop-dot-TL {
+    top: 0;
+    left: 0;
+    cursor: nw-resize;
+}
+
+.crop-dot-TR {
+    top: 0;
+    right: 0;
+    cursor: ne-resize;
+}
+
+.crop-dot-BL {
+    bottom: 0;
+    left: 0;
+    cursor: sw-resize;
+}
+
+.crop-dot-BR {
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+}
+
+.crop-actions {
+    position: absolute;
+    top: 0;
+    background-color: rgba(199, 199, 199, 0.45);
+    left: 50%;
+    width: 120px;
+    z-index: 4;
+}
+.crop-actions li{
+    display: inline-block;
+}
+
 @media screen and (max-width: 600px) {
-    .body-wrap.activeTool .toolbar-navigation-wrap{
+    .body-wrap.activeTool .toolbar-navigation-wrap {
         display: block;
         top: 0;
     }
-    .toolbar-navigation-wrap li{
+
+    .toolbar-navigation-wrap li {
         display: inline-block;
     }
 
-    .body-wrap.activeTool .header-wrap{
+    .body-wrap.activeTool .header-wrap {
         display: none;
     }
 
-    .body-wrap.activeTool #toolsList{
+    .body-wrap.activeTool #toolsList {
         display: none;
     }
 
-    .body-wrap.activeTool .toolbar-wrap{
+    .body-wrap.activeTool .toolbar-wrap {
         background-color: rgba(201, 202, 202, 0.44);
     }
 
-    .body-wrap.activeTool .content-wrap{
+    .body-wrap.activeTool .content-wrap {
         top: 0;
     }
 
@@ -148,16 +200,18 @@ body{
         z-index: 2;
     }
 
-    .toolbar-wrap .buttonsList{
-        display: block;
-        float: none;
-    }
-    .toolbar-wrap .buttonsList.buttonsListSecondary{
-        position: absolute;
-    }
-    .toolbar-wrap .buttonsList li{
-        display: inline-block;
-    }
+        .toolbar-wrap .buttonsList {
+            display: block;
+            float: none;
+        }
+
+            .toolbar-wrap .buttonsList.buttonsListSecondary {
+                position: absolute;
+            }
+
+            .toolbar-wrap .buttonsList li {
+                display: inline-block;
+            }
 
     .canvas-wrap {
         top: 0;

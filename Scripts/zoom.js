@@ -72,11 +72,16 @@
         applyZoom();
     }
 
+    function getZoomLevel() {
+        return zoomLevel;
+    }
+
     return {
         init: init,
         stepZoom: stepZoom,
         fitZoom: fitZoom,
         applyZoom: applyZoom,
-        refreshZoomWrap: refreshZoomWrap
+        refreshZoomWrap: refreshZoomWrap,
+        getZoomLevel: getZoomLevel
     };
 });

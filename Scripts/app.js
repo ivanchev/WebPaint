@@ -2,7 +2,8 @@
     baseUrl: "scripts"
 })
 
-define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom'], function (FileIO, Filters, Transforms, Cache, Zoom) {
+define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], function (
+    FileIO, Filters, Transforms, Cache, Zoom, Crop) {
     // App logic
 
     //#region Helpers
@@ -111,7 +112,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom'], function (Fil
 
     //#endregion
 
-    //#region Toolbar
+    //#region Nav Toolbar
 
     var imageData = null;
     function activateTool() {
@@ -144,6 +145,9 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom'], function (Fil
         imageData = null;
     };
 
+    //#endregion
+
+    //#region Toolbar
 
     transformButton.onclick = function() {
         $(".buttonsListSecondary").hide();
@@ -157,6 +161,18 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom'], function (Fil
         $(".buttonsListSecondary").hide();
 
         activateTool();
+
+        Zoom.fitZoom();
+
+        Crop.crop(canvas, Zoom.getZoomLevel(), function okCallback() {
+            Zoom.refreshZoomWrap();
+
+            Cache.store();
+
+            deactivateTool();
+        }, function cancelCallback() {
+            deactivateTool();
+        });
     };
 
     filterButton.onclick = function() {
