@@ -2,8 +2,8 @@
     baseUrl: "scripts"
 })
 
-define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], function (
-    FileIO, Filters, Transforms, Cache, Zoom, Crop) {
+define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'colors', 'slider'], function (
+    FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 
     //#region Helpers
@@ -12,14 +12,26 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], funct
         Filters[command](canvas);
         Cache.store();
     }
-    
+
     function applyTransform(command) {
         Transforms[command](canvas);
         Zoom.refreshZoomWrap();
         Cache.store();
     }
 
+    function applyColor(command) {
+        Slider.hide();
+
+        Slider.show(canvas, function(x, imageData) {
+            Color[command](canvas, imageData, x);
+        }, function() {
+            Cache.store();
+        });
+    }
+
     function init() {
+        Slider.hide();
+
         Cache.init(canvas);
 
         Zoom.init(canvas, zoomChanged);
@@ -53,7 +65,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], funct
     //#endregion
 
     //#region Transforms
-    
+
     flipHorizontalButton.onclick = function() {
         applyTransform("flipHorizontal");
     };
@@ -80,16 +92,19 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], funct
     //#region Cache
 
     undoButton.onclick = function () {
+        Slider.hide();
         Cache.undo();
         Zoom.refreshZoomWrap();
     };
 
     redoButton.onclick = function () {
+        Slider.hide();
         Cache.redo();
         Zoom.refreshZoomWrap();
     };
 
     resetButton.onclick = function () {
+        Slider.hide();
         Cache.reset();
         Zoom.refreshZoomWrap();
     };
@@ -112,55 +127,42 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], funct
 
     //#endregion
 
-    //#region Nav Toolbar
+    //#region Color
 
-    var imageData = null;
-    function activateTool() {
-        $(".body-wrap").addClass("activeTool");
-
-        var context = canvas.getContext("2d");
-        imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-    }
-
-    function deactivateTool() {
-        $(".body-wrap").removeClass("activeTool");
-    }
-
-    OKButton.onclick = function() {
-        deactivateTool();
+    brightnessButton.onclick = function() {
+        applyColor("brightness");
     };
 
-    CancelButton.onclick = function() {
-        deactivateTool();
-
-        var context = canvas.getContext("2d");
-
-        canvas.width = imageData.width;
-        canvas.height = imageData.height;
-        context.putImageData(imageData, 0, 0);
-
-        Zoom.refreshZoomWrap();
-        Cache.store();
-
-        imageData = null;
+    contrastButton.onclick = function() {
+        applyColor("contrast");
     };
 
     //#endregion
 
     //#region Toolbar
 
-    transformButton.onclick = function() {
+    function changePanel(panel) {
         $(".buttonsListSecondary").hide();
 
-        activateTool();
+        Slider.hide();
 
-        $(transformList).show();
+        $(panel).show();
+    }
+
+    transformButton.onclick = function() {
+        changePanel(transformList);
+    };
+
+    filterButton.onclick = function() {
+        changePanel(filterList);
+    };
+
+    colorButton.onclick = function() {
+        changePanel(colorList);
     };
 
     cropButton.onclick = function() {
         $(".buttonsListSecondary").hide();
-
-        activateTool();
 
         Zoom.fitZoom();
 
@@ -168,27 +170,9 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop'], funct
             Zoom.refreshZoomWrap();
 
             Cache.store();
-
-            deactivateTool();
         }, function cancelCallback() {
-            deactivateTool();
+
         });
-    };
-
-    filterButton.onclick = function() {
-        $(".buttonsListSecondary").hide();
-
-        activateTool();
-
-        $(filterList).show();
-    };
-
-    colorButton.onclick = function() {
-        $(".buttonsListSecondary").hide();
-
-        activateTool();
-
-        $(colorList).show();
     };
 
     //#endregion

@@ -16,12 +16,58 @@ body {
     background-color: lightgreen;
 }
 
-.toolbar-navigation-wrap {
+.toolbar-secondary-wrap {
     height: 70px;
     z-index: 2;
     position: absolute;
-    display: none;
+    left: 140px;
+    bottom: 0;
+    right: 0;
+    text-align:center;
+    overflow: hidden;
+
+    border: 1px solid black;
 }
+
+    .toolbar-secondary-wrap ul {
+        height: 50px;
+    }
+
+    .toolbar-secondary-wrap li {
+        display: inline-block;
+    }
+    
+    .toolbar-secondary-wrap .toolbar-slider-wrap {
+        display: inline-block;
+        width: 300px;
+        height: 68px;
+        position: relative;
+
+        border: 1px solid black;
+    }
+    .toolbar-slider-wrap .slider-line{
+        width: 200px;
+        height: 2px;
+        background-color: black;
+        position: relative;
+        top: 34px;
+        left: 50px;
+    }
+    .toolbar-slider-wrap .slider-handle{
+        width: 25px;
+        height: 25px;
+        background-color: black;
+        position: relative;
+        top: 35px;
+        left: 100px;
+        margin-top: -12.5px;
+        margin-left: 37.5px;
+        border-radius: 15px;
+    }
+
+    .toolbar-secondary-wrap .toolbar-buttons-wrap {
+        display: inline-block;
+    }
 
 .buttonsList {
     list-style: none;
@@ -166,14 +212,12 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-    .body-wrap.activeTool .toolbar-navigation-wrap {
+    .body-wrap.activeTool .toolbar-buttons-wrap {
         display: block;
         top: 0;
+        background-color: rgba(201, 202, 202, 0.44);
     }
 
-    .toolbar-navigation-wrap li {
-        display: inline-block;
-    }
 
     .body-wrap.activeTool .header-wrap {
         display: none;
@@ -191,6 +235,9 @@ body {
         top: 0;
     }
 
+    .toolbar-secondary-wrap {
+        position: initial;
+    }
 
     .toolbar-wrap {
         position: absolute;
