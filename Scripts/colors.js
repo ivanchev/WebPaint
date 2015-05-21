@@ -1,9 +1,11 @@
 ﻿define([
     'colors/brightness',
-    'colors/contrast'
-    ], function(brightness, contrast) {
+    'colors/contrast',
+    'colors/hue'
+    ], function(brightness, contrast, hue) {
         return {
             brightness: brightness,
-            contrast: contrast
+            contrast: contrast,
+            hue: hue
         };
     });

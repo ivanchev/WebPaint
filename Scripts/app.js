@@ -132,9 +132,13 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
     brightnessButton.onclick = function() {
         applyColor("brightness");
     };
-
+    
     contrastButton.onclick = function() {
         applyColor("contrast");
+    };
+
+    hueButton.onclick = function() {
+        applyColor("hue");
     };
 
     //#endregion
