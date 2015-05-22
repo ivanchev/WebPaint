@@ -1,9 +1,13 @@
 ﻿define([
     'filters/grayscale',
-    'filters/invert'
-    ], function(grayscale, invert) {
+    'filters/invert',
+    'filters/blur',
+    'filters/sharpen'
+    ], function(grayscale, invert, blur, sharpen) {
         return {
             grayscale: grayscale,
-            invert: invert
+            invert: invert,
+            blur: blur,
+            sharpen: sharpen
         };
     });

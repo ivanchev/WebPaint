@@ -61,6 +61,14 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
     grayscaleButton.onclick = function () {
         applyFilter("grayscale");
     };
+    
+    blurButton.onclick = function () {
+        applyFilter("blur");
+    };
+
+    sharpenButton.onclick = function () {
+        applyFilter("sharpen");
+    };
 
     //#endregion
 
