@@ -2,12 +2,14 @@
     'colors/brightness',
     'colors/contrast',
     'colors/hue',
-    'colors/saturation'
-    ], function(brightness, contrast, hue, saturation) {
+    'colors/saturation',
+    'colors/threshold'
+    ], function(brightness, contrast, hue, saturation, threshold) {
         return {
             brightness: brightness,
             contrast: contrast,
             hue: hue,
-            saturation: saturation
+            saturation: saturation,
+            threshold: threshold
         };
     });
