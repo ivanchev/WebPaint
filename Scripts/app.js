@@ -176,7 +176,9 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
     cropButton.onclick = function() {
         $(".buttonsListSecondary").hide();
 
-        Zoom.fitZoom();
+        if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
+            Zoom.fitZoom();
+        }
 
         Crop.crop(canvas, Zoom.getZoomLevel(), function okCallback() {
             Zoom.refreshZoomWrap();
