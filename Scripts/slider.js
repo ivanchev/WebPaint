@@ -33,12 +33,13 @@
                     var handle = this;
                     var x = e.clientX;
                     var startX = parseInt($(handle).css("left"), 10);
+                    var deltaX;
 
                     $(document)
                         .on("mousemove", function(e) {
                             e.preventDefault();
 
-                            var deltaX = ((e.clientX - x) + startX) - 100;
+                            deltaX = ((e.clientX - x) + startX) - 100;
                             deltaX = Math.max(-100, Math.min(100, (deltaX)));
 
                             $(handle).css("left", 100 + deltaX);
@@ -47,6 +48,9 @@
                             changeCallback(deltaX, imageData);
                         })
                         .on("mouseup", function(e) {
+                            //var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
+                            //changeCallback(deltaX, imageData);
+
                             $(document).off();
                         });
                 });
@@ -77,12 +81,12 @@
     }
 
     function createSlider() {
-        var element = $('<div class="toolbar-secondary-wrap">' +
-                '<div class="toolbar-slider-wrap">' +
+        var element = $('<div class="toolbar-slider-wrap">' +
+                '<div class="slider-wrap">' +
                     '<div class="slider-line"></div>' +
                     '<div class="slider-handle"></div>' +
                 '</div>' +
-                '<div class="toolbar-buttons-wrap">' +
+                '<div class="buttons-wrap">' +
                     '<ul class="buttonsList">' +
                         '<li id="CancelButton"><span class="icon iconCancel"></span>Cancel</li>' +
                         '<li id="OKButton"><span class="icon iconOK"></span>OK</li>' +
