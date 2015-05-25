@@ -33,17 +33,24 @@
             });
 
         if (changeCallback) {
-            slider.on("mousedown", ".slider-handle", function(e) {
+            var isTouch = 'ontouchstart' in window;
+            var DOWN = isTouch ? "touchstart" : "mousedown";
+            var MOVE = isTouch ? "touchmove" : "mousemove";
+            var END = isTouch ? "touchend" : "mouseup";
+
+            slider.on(DOWN, ".slider-handle", function(e) {
                     var handle = this;
-                    var x = e.clientX;
+                    var x = isTouch ? e.originalEvent.touches[0].clientX : e.clientX;
                     var startX = parseInt($(handle).css("left"), 10);
                     var deltaX;
 
                     $(document)
-                        .on("mousemove.slider", function(e) {
+                        .on(MOVE + ".slider", function(e) {
                             e.preventDefault();
 
-                            deltaX = ((e.clientX - x) + startX) - 100;
+                            var clientX = isTouch ? e.originalEvent.targetTouches[0].clientX : e.clientX;
+
+                            deltaX = ((clientX - x) + startX) - 100;
                             deltaX = Math.max(-100, Math.min(100, (deltaX)));
 
                             $(handle).css("left", 100 + deltaX);
@@ -51,10 +58,7 @@
                             var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
                             changeCallback(deltaX, imageData);
                         })
-                        .on("mouseup.slider", function(e) {
-                            //var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
-                            //changeCallback(deltaX, imageData);
-
+                        .on(END + ".slider", function(e) {
                             $(document).off(".slider");
                         });
                 });

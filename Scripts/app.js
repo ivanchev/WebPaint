@@ -8,30 +8,45 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
 
     //#region Helpers
 
+    function isTouch() {
+        return 'ontouchstart' in window;
+    }
+
     function applyFilter(command) {
         Filters[command](canvas);
-        Cache.store();
+
+        if (!isTouch()) {
+            Cache.store();
+        }
     }
 
     function applyTransform(command) {
         Transforms[command](canvas);
         Zoom.refreshZoomWrap();
-        Cache.store();
+
+        if (!isTouch()) {
+            Cache.store();
+        }
     }
 
     function applyColor(command) {
         Slider.hide();
 
+        var resetState = function() {
+            $(".buttonsListSecondary .selected").removeClass("selected");
+            $(".body-wrap").removeClass("edit-slider");
+        };
+
         Slider.show(canvas, function(x, imageData) {
             Color[command](canvas, imageData, x);
         }, function() {
-            Cache.store();
+            if (!isTouch()) {
+                Cache.store();
+            }
 
-            $(".buttonsListSecondary .selected").removeClass("selected");
-            $(".body-wrap").removeClass("edit-slider");
+            resetState();
         }, function() {
-            $(".buttonsListSecondary .selected").removeClass("selected");
-            $(".body-wrap").removeClass("edit-slider");
+            resetState();
         });
     }
 
@@ -187,12 +202,14 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
     }
 
     applyButton.onclick = function() {
-        // TODO Cache
+        Cache.store();
 
         finishEdit();
     };
 
     restoreButton.onclick = function() {
+        Cache.current();
+
         finishEdit();
     };
 

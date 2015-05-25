@@ -76,11 +76,16 @@
         apply(cacheArray[currentIndex]);
     }
 
+    function current() {
+        apply(cacheArray[currentIndex]);
+    }
+
     return {
         init: init,
         reset: reset,
         store: store,
         undo: undo,
-        redo: redo
+        redo: redo,
+        current: current
     };
 });

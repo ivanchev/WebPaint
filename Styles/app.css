@@ -229,7 +229,7 @@ body {
         display: inline-block;
     }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
     .toolbar-wrap {
         width: 100%;
         height: 70px;
@@ -280,10 +280,16 @@ body {
 
         .body-wrap.edit-slider .toolbar-slider-wrap {
             position: initial;
+            text-align: initial;
         }
         .body-wrap.edit-slider .slider-wrap {
             position: absolute;
             bottom: 70px;
+        }
+        .body-wrap.edit-slider .toolbar-slider-wrap .buttons-wrap {
+            position:absolute;
+            width: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
         }
 
 }
