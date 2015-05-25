@@ -252,4 +252,8 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
 
     init();
 
+    window.onbeforeunload = function (e) {
+        Zoom.disposeEvents();
+    };
+
 });

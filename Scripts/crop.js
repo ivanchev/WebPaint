@@ -8,7 +8,7 @@
             box = null;
         }
 
-        $(document).off();
+        $(document).off(".crop");
 
         if (actionsWrap) {
             actionsWrap.off().remove();
@@ -68,7 +68,7 @@
             var boxSize = getBoxDimensions();
 
             $(document)
-                .on("mousemove", function(e) {
+                .on("mousemove.crop", function(e) {
                     e.preventDefault();
 
                     var deltaX = e.clientX - x;
@@ -117,8 +117,8 @@
                         .css("top", top)
                         .css("left", left);
                 })
-                .on("mouseup", function(e) {
-                    $(document).off();
+                .on("mouseup.crop", function(e) {
+                    $(document).off(".crop");
                 });
         });
     }

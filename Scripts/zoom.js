@@ -12,6 +12,48 @@
         zoomLevel = 100;
 
         applyZoom();
+
+        initEvents();
+    }
+
+    function getTouchDistance(touches) {
+        var x1 = touches[0].clientX;
+        var x2 = touches[1].clientX;
+
+        var y1 = touches[0].clientY;
+        var y2 = touches[1].clientY;
+
+        return Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
+    }
+
+    function initEvents() {
+        disposeEvents();
+
+        $(document)
+            .on("touchstart.zoom", function(e) {
+                if (e.originalEvent.touches.length == 2) {
+                    var originalZoomLevel = zoomLevel;
+                    var x = getTouchDistance(e.originalEvent.touches);
+                    var y;
+
+                    $(document)
+                        .on("touchmove.zoom", function(e) {
+                            y = getTouchDistance(e.originalEvent.targetTouches);
+
+                            zoomLevel = originalZoomLevel * (y / x);
+                            applyZoom();
+                        })
+                        .on("touchend.zoom", function(e) {
+                            $(document)
+                                .off("touchmove.zoom")
+                                .off("touchend.zoom");
+                        });
+                }
+            });
+    }
+
+    function disposeEvents() {
+        $(document).off(".zoom");
     }
 
     function applyZoom() {
@@ -82,6 +124,7 @@
         fitZoom: fitZoom,
         applyZoom: applyZoom,
         refreshZoomWrap: refreshZoomWrap,
-        getZoomLevel: getZoomLevel
+        getZoomLevel: getZoomLevel,
+        disposeEvents: disposeEvents
     };
 });

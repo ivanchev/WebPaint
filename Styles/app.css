@@ -240,6 +240,16 @@ body {
         background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     }
 
+    .header-wrap {
+        background-color: transparent;
+        background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        z-index: 2;
+    }
+
+    .content-wrap{
+        top: 0;
+    }
+
     .canvas-wrap {
         left: 0;
         width: 100%;

@@ -40,7 +40,7 @@
                     var deltaX;
 
                     $(document)
-                        .on("mousemove", function(e) {
+                        .on("mousemove.slider", function(e) {
                             e.preventDefault();
 
                             deltaX = ((e.clientX - x) + startX) - 100;
@@ -51,11 +51,11 @@
                             var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
                             changeCallback(deltaX, imageData);
                         })
-                        .on("mouseup", function(e) {
+                        .on("mouseup.slider", function(e) {
                             //var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
                             //changeCallback(deltaX, imageData);
 
-                            $(document).off();
+                            $(document).off(".slider");
                         });
                 });
         }
