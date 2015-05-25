@@ -1,6 +1,6 @@
 ﻿requirejs.config({
     baseUrl: "scripts"
-})
+});
 
 define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'colors', 'slider'], function (
     FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
