@@ -26,11 +26,18 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
             Color[command](canvas, imageData, x);
         }, function() {
             Cache.store();
+
+            $(".buttonsListSecondary .selected").removeClass("selected");
+            $(".body-wrap").removeClass("edit-slider");
+        }, function() {
+            $(".buttonsListSecondary .selected").removeClass("selected");
+            $(".body-wrap").removeClass("edit-slider");
         });
     }
 
     function init() {
         Slider.hide();
+        Crop.hide();
 
         Cache.init(canvas);
 
@@ -101,18 +108,21 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
 
     undoButton.onclick = function () {
         Slider.hide();
+        Crop.hide();
         Cache.undo();
         Zoom.refreshZoomWrap();
     };
 
     redoButton.onclick = function () {
         Slider.hide();
+        Crop.hide();
         Cache.redo();
         Zoom.refreshZoomWrap();
     };
 
     resetButton.onclick = function () {
         Slider.hide();
+        Crop.hide();
         Cache.reset();
         Zoom.refreshZoomWrap();
     };
@@ -137,24 +147,53 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
 
     //#region Color
 
+    function selectColor(button, command) {
+        applyColor(command);
+
+        $(".body-wrap").addClass("edit-slider");
+
+        $(button).parent().find(".selected").removeClass("selected");
+        $(button).addClass("selected");
+    }
+
     brightnessButton.onclick = function() {
-        applyColor("brightness");
+        selectColor(this, "brightness");
     };
     
     contrastButton.onclick = function() {
-        applyColor("contrast");
+        selectColor(this, "contrast");
     };
     
     hueButton.onclick = function() {
-        applyColor("hue");
+        selectColor(this, "hue");
     };
     
     saturationButton.onclick = function() {
-        applyColor("saturation");
+        selectColor(this, "saturation");
     };
 
     thresholdButton.onclick = function() {
-        applyColor("threshold");
+        selectColor(this, "threshold");
+    };
+
+    //#endregion
+
+    //#region Mobile Confirm
+
+    function finishEdit() {
+        $(".body-wrap").removeClass("edit");
+        $(".buttonsListSecondary").hide();
+        $(".selected").removeClass("selected");
+    }
+
+    applyButton.onclick = function() {
+        // TODO Cache
+
+        finishEdit();
+    };
+
+    restoreButton.onclick = function() {
+        finishEdit();
     };
 
     //#endregion
@@ -163,26 +202,38 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
 
     function changePanel(panel) {
         $(".buttonsListSecondary").hide();
+        $(".selected").removeClass("selected");
 
         Slider.hide();
+        Crop.hide();
 
         $(panel).show();
+        $(".body-wrap").addClass("edit");
     }
 
     transformButton.onclick = function() {
         changePanel(transformList);
+        $(this).addClass("selected");
     };
 
     filterButton.onclick = function() {
         changePanel(filterList);
+        $(this).addClass("selected");
     };
 
     colorButton.onclick = function() {
         changePanel(colorList);
+        $(this).addClass("selected");
     };
 
     cropButton.onclick = function() {
         $(".buttonsListSecondary").hide();
+        $(".selected").removeClass("selected");
+
+        Slider.hide();
+        Crop.hide();
+
+        $(this).addClass("selected");
 
         if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
             Zoom.fitZoom();

@@ -23,8 +23,11 @@ body {
     margin: 10px;
 }
 
-#zoomList {
+.buttonsList#zoomList {
     float: right;
+}
+.buttonsList#confirmList {
+    display: none;
 }
 
 .buttonsList li {
@@ -34,11 +37,20 @@ body {
     height: 50px;
     text-align: center;
     overflow: hidden;
-}
-
-.header-wrap .buttonsList li {
     display: inline-block;
     font-size: 15px;
+}
+
+.buttonsList li.selected,
+.buttonsList li:active {
+    background-color: red;
+}
+.buttonsList li:hover {
+    background-color: #1ddd73;
+}
+
+.toolbar-wrap .buttonsList li {
+    display: block;
 }
 
 .buttonsList li#uploadButton input {
@@ -71,17 +83,14 @@ body {
     height: 100%;
     left: 140px;
     right: 0;
-    text-align: center;
-    overflow: auto;
+    overflow: scroll;
     background-color: lightgrey;
 }
 
     .canvas-wrap .zoom-wrap {
         overflow: hidden;
         position: relative;
-        text-align: initial;
         margin: auto;
-        /*border: 1px solid red;*/
     }
 
     .canvas-wrap canvas {
@@ -221,57 +230,50 @@ body {
     }
 
 @media screen and (max-width: 600px) {
-    .body-wrap.activeTool .buttons-wrap {
-        display: block;
-        top: 0;
-        background-color: rgba(201, 202, 202, 0.44);
-    }
-
-
-    .body-wrap.activeTool .header-wrap {
-        display: none;
-    }
-
-    .body-wrap.activeTool #panelsList {
-        display: none;
-    }
-
-    .body-wrap.activeTool .toolbar-wrap {
-        background-color: rgba(201, 202, 202, 0.44);
-    }
-
-    .body-wrap.activeTool .content-wrap {
-        top: 0;
-    }
-
-    .toolbar-slider-wrap {
-        position: initial;
-    }
-
     .toolbar-wrap {
-        position: absolute;
         width: 100%;
         height: 70px;
         bottom: 0;
         z-index: 2;
+        overflow: hidden; /* TODO fix dimensions */
+        background-color: transparent;
+        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     }
 
-        .toolbar-wrap .buttonsList {
-            display: block;
-            float: none;
-        }
+    .canvas-wrap {
+        left: 0;
+        width: 100%;
+    }
 
-            .toolbar-wrap .buttonsList.buttonsListSecondary {
-                position: absolute;
-            }
+        .body-wrap.edit #panelsList {
+            display: none;
+        }
+        
+        .body-wrap.edit .header-wrap .buttonsList{
+            display: none;
+        }
+        .body-wrap.edit .header-wrap #confirmList {
+            display: block;
+        }
 
             .toolbar-wrap .buttonsList li {
                 display: inline-block;
             }
 
-    .canvas-wrap {
-        top: 0;
-        left: 0;
-        width: 100%;
-    }
+
+        .body-wrap.edit-slider .header-wrap{
+            display: none;
+        }
+        .body-wrap.edit-slider .content-wrap{
+            top: 0;
+        }
+
+        .body-wrap.edit-slider .toolbar-slider-wrap {
+            position: initial;
+        }
+        .body-wrap.edit-slider .slider-wrap {
+            position: absolute;
+            bottom: 70px;
+        }
+
 }

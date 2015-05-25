@@ -4,7 +4,7 @@
     var originalImageData;
     var slider;
 
-    function show(cv, changeCallback, okCallback) {
+    function show(cv, changeCallback, okCallback, cancelCallback) {
         slider = createSlider();
 
         canvas = cv;
@@ -26,6 +26,10 @@
             })
             .on("click", "#CancelButton", function() {
                 hide();
+
+                if (cancelCallback) {
+                    cancelCallback();
+                }
             });
 
         if (changeCallback) {

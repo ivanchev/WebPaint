@@ -2,11 +2,13 @@
     var box;
     var actionsWrap;
 
-    function destroy() {
+    function hide() {
         if (box) {
             box.off().remove();
             box = null;
         }
+
+        $(document).off();
 
         if (actionsWrap) {
             actionsWrap.off().remove();
@@ -47,14 +49,14 @@
             .appendTo($(".canvas-wrap"))
             .on("click", "#cropCancel", function() {
 
-                destroy();
+                hide();
 
                 cancelCallback();
             })
             .on("click", "#cropOK", function() {
                 cropImage(canvas, zoomLevel);
 
-                destroy();
+                hide();
 
                 okCallback();
             });
@@ -145,6 +147,7 @@
     }
 
     return {
-        crop: crop
+        crop: crop,
+        hide: hide
     };
 });
