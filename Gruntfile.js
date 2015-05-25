@@ -18,14 +18,25 @@ module.exports = function (grunt) {
 			baseUrl: "Scripts/",
 			mainConfigFile: "Scripts/app.js",
 			name: "app",
-			out: "Dist/scripts.js"
+			out: "Dist/scripts.min.js"
 		    }
 		  }
+		},
+		cssmin: {
+			min: {
+				options: {
+					"report":"gzip"
+				},
+				files:{
+					"Dist/styles.min.css": ["Styles/app.css"]
+				}
+			}
 		}
 	});
 
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-contrib-requirejs");
+	grunt.loadNpmTasks("grunt-contrib-cssmin");
 
-	grunt.registerTask("default", ['jshint']);
+	grunt.registerTask("default", ['jshint', 'requirejs', 'cssmin']);
 };
