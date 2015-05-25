@@ -11,11 +11,21 @@ module.exports = function (grunt) {
 				"ignores": ['Scripts/lib/**/*.js']
 			},
 			files: ['Scripts/**/*.js']
+		},
+		requirejs: {
+		  compile: {
+		    options: {
+			baseUrl: "Scripts/",
+			mainConfigFile: "Scripts/app.js",
+			name: "app",
+			out: "Dist/scripts.js"
+		    }
+		  }
 		}
 	});
 
 	grunt.loadNpmTasks("grunt-contrib-jshint");
+	grunt.loadNpmTasks("grunt-contrib-requirejs");
 
 	grunt.registerTask("default", ['jshint']);
-
 };
