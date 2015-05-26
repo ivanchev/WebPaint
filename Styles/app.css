@@ -245,6 +245,12 @@ body {
         background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
         z-index: 2;
     }
+    .header-wrap #zoomList li {
+        display: none;
+    }
+    .header-wrap #zoomList #zoomFitButton {
+        display: inline-block;
+    }
 
     .content-wrap{
         top: 0;
