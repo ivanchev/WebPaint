@@ -92,6 +92,10 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
         applyFilter("sharpen");
     };
 
+    embossButton.onclick = function () {
+        applyFilter("emboss");
+    };
+
     //#endregion
 
     //#region Transforms

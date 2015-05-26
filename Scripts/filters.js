@@ -2,12 +2,14 @@
     'filters/grayscale',
     'filters/invert',
     'filters/blur',
-    'filters/sharpen'
-    ], function(grayscale, invert, blur, sharpen) {
+    'filters/sharpen',
+    'filters/emboss'
+    ], function(grayscale, invert, blur, sharpen, emboss) {
         return {
             grayscale: grayscale,
             invert: invert,
             blur: blur,
-            sharpen: sharpen
+            sharpen: sharpen,
+            emboss: emboss
         };
     });
