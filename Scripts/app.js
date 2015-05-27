@@ -91,9 +91,17 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
     sharpenButton.onclick = function () {
         applyFilter("sharpen");
     };
-
+    
     embossButton.onclick = function () {
         applyFilter("emboss");
+    };
+    
+    edgeButton.onclick = function () {
+        applyFilter("edge");
+    };
+
+    sobelButton.onclick = function () {
+        applyFilter("sobel");
     };
 
     //#endregion

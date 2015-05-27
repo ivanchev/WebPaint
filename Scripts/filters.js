@@ -3,13 +3,17 @@
     'filters/invert',
     'filters/blur',
     'filters/sharpen',
-    'filters/emboss'
-    ], function(grayscale, invert, blur, sharpen, emboss) {
+    'filters/emboss',
+    'filters/edge',
+    'filters/sobel'
+    ], function(grayscale, invert, blur, sharpen, emboss, edge, sobel) {
         return {
             grayscale: grayscale,
             invert: invert,
             blur: blur,
             sharpen: sharpen,
-            emboss: emboss
+            emboss: emboss,
+            edge: edge,
+            sobel: sobel
         };
     });

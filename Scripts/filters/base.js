@@ -50,6 +50,7 @@
 
     return { 
         applyFilter: applyFilter,
-        applyConvoluteFilter: applyConvoluteFilter
+        applyConvoluteFilter: applyConvoluteFilter,
+        getIndexMatrix: getIndexMatrix
     };
 });
