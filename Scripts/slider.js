@@ -1,14 +1,12 @@
 ﻿define(function() {
     var canvas;
     var memCanvas;
-    var originalImageData;
     var slider;
 
     function show(cv, changeCallback, okCallback, cancelCallback) {
         slider = createSlider();
 
         canvas = cv;
-        originalImageData = canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height);
 
         memCanvas = $("<canvas>")[0];
         memCanvas.width = canvas.width;
@@ -18,7 +16,7 @@
         memContext.drawImage(canvas, 0, 0);
 
         slider.on("click", "#OKButton", function() {
-                destroy();
+                hide();
 
                 if (okCallback) {
                     okCallback();
@@ -65,7 +63,7 @@
         }
     }
 
-    function destroy() {
+    function hide() {
         if (slider) {
             slider
                 .off()
@@ -75,17 +73,6 @@
         slider = null;
 
         memCanvas = null;
-        originalImageData = null;
-    }
-
-    function hide() {
-        if (originalImageData) {
-            var context = canvas.getContext("2d");
-
-            context.putImageData(originalImageData, 0, 0);
-        }
-
-        destroy();
     }
 
     function createSlider() {

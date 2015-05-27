@@ -38,6 +38,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
 
     function applyColor(button, command) {
         Slider.hide();
+        Cache.current();
 
         var resetState = function() {
             $(".buttonsListSecondary .selected").removeClass("selected");
@@ -53,6 +54,8 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
 
             resetState();
         }, function cancelCallback() {
+            Cache.current();
+
             resetState();
         });
 
@@ -84,6 +87,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     loadFile.onchange = function () {
         Slider.hide();
         Crop.hide();
+        Cache.current();
 
         if (!this.files.length) {
             return;
@@ -97,6 +101,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     downloadButton.onclick = function() {
         Slider.hide();
         Crop.hide();
+        Cache.current();
 
         FileIO.saveFile(canvas, imageName);
     };
@@ -257,6 +262,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
         $(".selected").removeClass("selected");
 
         Slider.hide();
+        Cache.current();
         Crop.hide();
 
         if (panel) {
