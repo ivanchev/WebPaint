@@ -2,7 +2,7 @@
     baseUrl: "scripts"
 });
 
-define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'colors', 'slider'], function (
+define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors', 'slider'], function (
     FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 
@@ -68,8 +68,20 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
 
     //#region File IO
 
+    var imageName;
+
     loadFile.onchange = function () {
+        if (!this.files.length) {
+            return;
+        }
+
+        imageName = this.files[0].name;
+
         FileIO.loadFile(this, canvas, init);
+    };
+
+    downloadButton.onclick = function() {
+        FileIO.saveFile(canvas, imageName);
     };
 
     //#endregion

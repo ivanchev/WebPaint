@@ -42,7 +42,14 @@
         img.src = src;
     }
 
+    function saveFile(canvas, imageName) {
+        canvas.toBlob(function(blob) {
+            saveAs(blob, imageName);
+        });
+    }
+
     return {
-        loadFile: loadFile
+        loadFile: loadFile,
+        saveFile: saveFile
     };
 });
