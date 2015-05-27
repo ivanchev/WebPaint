@@ -17,14 +17,21 @@
 
             var r, g, b;
             var indexMatrix = getIndexMatrix(canvas.width);
+            var index;
 
             for (var i = 0, l = data.length; i < l; i += 4) {
                 r = g = b = 0;
 
                 for(var j = 0; j < indexMatrix.length; j ++) {
-                    r += baseImage[i + indexMatrix[j]] * weightMatrix[j];
-                    g += baseImage[i + indexMatrix[j] + 1] * weightMatrix[j];
-                    b += baseImage[i + indexMatrix[j] + 2] * weightMatrix[j];
+                    index = i + indexMatrix[j];
+
+                    if (index < 0 || index > l) {
+                        index = i;
+                    }
+
+                    r += baseImage[index] * weightMatrix[j];
+                    g += baseImage[index + 1] * weightMatrix[j];
+                    b += baseImage[index + 2] * weightMatrix[j];
                 }
 
                 data[i] = r / divider;
