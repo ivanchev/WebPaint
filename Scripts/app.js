@@ -12,6 +12,13 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
         return 'ontouchstart' in window;
     }
 
+    function applyCache(command) {
+        Slider.hide();
+        Crop.hide();
+        Cache[command]();
+        Zoom.refreshZoomWrap();
+    }
+
     function applyFilter(command) {
         Filters[command](canvas);
 
@@ -29,7 +36,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
         }
     }
 
-    function applyColor(command) {
+    function applyColor(button, command) {
         Slider.hide();
 
         var resetState = function() {
@@ -37,29 +44,33 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
             $(".body-wrap").removeClass("edit-slider");
         };
 
-        Slider.show(canvas, function(x, imageData) {
+        Slider.show(canvas, function changeCallback(x, imageData) {
             Color[command](canvas, imageData, x);
-        }, function() {
+        }, function okCallback() {
             if (!isTouch()) {
                 Cache.store();
             }
 
             resetState();
-        }, function() {
+        }, function cancelCallback() {
             resetState();
         });
+
+        $(".body-wrap").addClass("edit-slider");
+
+        $(button).parent().find(".selected").removeClass("selected");
+        $(button).addClass("selected");
     }
 
     function init() {
-        Slider.hide();
-        Crop.hide();
-
         Cache.init(canvas);
 
         Zoom.init(canvas, zoomChanged);
     }
 
     function zoomChanged(zoomLevel) {
+        Crop.hide();
+
         zoomList.children[1].textContent = zoomLevel + "%";
     }
 
@@ -71,6 +82,9 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     var imageName;
 
     loadFile.onchange = function () {
+        Slider.hide();
+        Crop.hide();
+
         if (!this.files.length) {
             return;
         }
@@ -81,6 +95,9 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     };
 
     downloadButton.onclick = function() {
+        Slider.hide();
+        Crop.hide();
+
         FileIO.saveFile(canvas, imageName);
     };
 
@@ -95,7 +112,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     grayscaleButton.onclick = function () {
         applyFilter("grayscale");
     };
-    
+
     blurButton.onclick = function () {
         applyFilter("blur");
     };
@@ -103,11 +120,11 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     sharpenButton.onclick = function () {
         applyFilter("sharpen");
     };
-    
+
     embossButton.onclick = function () {
         applyFilter("emboss");
     };
-    
+
     edgeButton.onclick = function () {
         applyFilter("edge");
     };
@@ -115,7 +132,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     sobelButton.onclick = function () {
         applyFilter("sobel");
     };
-    
+
     erodeButton.onclick = function () {
         applyFilter("erode");
     };
@@ -158,24 +175,15 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     //#region Cache
 
     undoButton.onclick = function () {
-        Slider.hide();
-        Crop.hide();
-        Cache.undo();
-        Zoom.refreshZoomWrap();
+        applyCache("undo");
     };
 
     redoButton.onclick = function () {
-        Slider.hide();
-        Crop.hide();
-        Cache.redo();
-        Zoom.refreshZoomWrap();
+        applyCache("redo");
     };
 
     resetButton.onclick = function () {
-        Slider.hide();
-        Crop.hide();
-        Cache.reset();
-        Zoom.refreshZoomWrap();
+        applyCache("reset");
     };
 
     //#endregion
@@ -198,33 +206,24 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
 
     //#region Color
 
-    function selectColor(button, command) {
-        applyColor(command);
-
-        $(".body-wrap").addClass("edit-slider");
-
-        $(button).parent().find(".selected").removeClass("selected");
-        $(button).addClass("selected");
-    }
-
     brightnessButton.onclick = function() {
-        selectColor(this, "brightness");
+        applyColor(this, "brightness");
     };
-    
+
     contrastButton.onclick = function() {
-        selectColor(this, "contrast");
+        applyColor(this, "contrast");
     };
-    
+
     hueButton.onclick = function() {
-        selectColor(this, "hue");
+        applyColor(this, "hue");
     };
-    
+
     saturationButton.onclick = function() {
-        selectColor(this, "saturation");
+        applyColor(this, "saturation");
     };
 
     thresholdButton.onclick = function() {
-        selectColor(this, "threshold");
+        applyColor(this, "threshold");
     };
 
     //#endregion
@@ -253,51 +252,49 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
 
     //#region Toolbar
 
-    function changePanel(panel) {
+    function changePanel(panel, button) {
         $(".buttonsListSecondary").hide();
         $(".selected").removeClass("selected");
 
         Slider.hide();
         Crop.hide();
 
-        $(panel).show();
-        $(".body-wrap").addClass("edit");
+        if (panel) {
+            $(panel).show();
+            $(".body-wrap").addClass("edit");
+        }
+
+        $(button).addClass("selected");
     }
 
     transformButton.onclick = function() {
-        changePanel(transformList);
-        $(this).addClass("selected");
+        changePanel(transformList, this);
     };
 
     filterButton.onclick = function() {
-        changePanel(filterList);
-        $(this).addClass("selected");
+        changePanel(filterList, this);
     };
 
     colorButton.onclick = function() {
-        changePanel(colorList);
-        $(this).addClass("selected");
+        changePanel(colorList, this);
     };
 
     cropButton.onclick = function() {
-        $(".buttonsListSecondary").hide();
-        $(".selected").removeClass("selected");
-
-        Slider.hide();
-        Crop.hide();
-
-        $(this).addClass("selected");
+        changePanel(null, this);
 
         if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
             Zoom.fitZoom();
         }
 
+        $(".body-wrap").addClass("edit edit-slider");
+
         Crop.crop(canvas, Zoom.getZoomLevel(), function okCallback() {
             Zoom.refreshZoomWrap();
+            $(".body-wrap").removeClass("edit").removeClass("edit-slider");
 
             Cache.store();
         }, function cancelCallback() {
-
+            $(".body-wrap").removeClass("edit").removeClass("edit-slider");
         });
     };
 
