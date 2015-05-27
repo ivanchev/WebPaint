@@ -5,8 +5,11 @@
     'filters/sharpen',
     'filters/emboss',
     'filters/edge',
-    'filters/sobel'
-    ], function(grayscale, invert, blur, sharpen, emboss, edge, sobel) {
+    'filters/sobel',
+    'filters/erode',
+    'filters/dilate',
+    'filters/median'
+    ], function(grayscale, invert, blur, sharpen, emboss, edge, sobel, erode, dilate, median) {
         return {
             grayscale: grayscale,
             invert: invert,
@@ -14,6 +17,9 @@
             sharpen: sharpen,
             emboss: emboss,
             edge: edge,
-            sobel: sobel
+            sobel: sobel,
+            erode: erode,
+            dilate: dilate,
+            median: median
         };
     });

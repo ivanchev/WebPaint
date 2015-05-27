@@ -103,6 +103,18 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom', 'crop', 'color
     sobelButton.onclick = function () {
         applyFilter("sobel");
     };
+    
+    erodeButton.onclick = function () {
+        applyFilter("erode");
+    };
+
+    dilateButton.onclick = function () {
+        applyFilter("dilate");
+    };
+
+    medianButton.onclick = function () {
+        applyFilter("median");
+    };
 
     //#endregion
 

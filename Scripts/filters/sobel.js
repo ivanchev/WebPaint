@@ -17,6 +17,7 @@
             var baseImage = imageData.data;
 
             var r, g, b;
+            var r2, g2, b2;
             var indexMatrix = base.getIndexMatrix(canvas.width);
             var index;
 
