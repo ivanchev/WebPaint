@@ -19,14 +19,17 @@ body {
 .buttonsList {
     list-style: none;
     padding: 0;
-    float: left;
     margin: 10px;
 }
 
-.buttonsList#zoomList {
+.header-wrap .buttonsList {
+    float: left;
+}
+
+.header-wrap .buttonsList#zoomList {
     float: right;
 }
-.buttonsList#confirmList {
+.header-wrap .buttonsList#confirmList {
     display: none;
 }
 
@@ -48,6 +51,9 @@ body {
 .buttonsList li:hover {
     background-color: #1ddd73;
 }
+
+
+
 
 .toolbar-wrap .buttonsList li {
     display: block;
@@ -230,6 +236,16 @@ body {
         display: inline-block;
     }
 
+@media screen and (min-width: 721px) {
+    .toolbar-primary-wrap{
+        display:inline-block;
+        float: left;
+    }
+
+    .toolbar-secondary-wrap{
+        display:inline-block;
+    }
+}
 @media screen and (max-width: 720px) {
     .toolbar-wrap {
         width: 100%;
@@ -255,6 +271,7 @@ body {
 
     .content-wrap{
         top: 0;
+        overflow: hidden;
     }
 
     .canvas-wrap {
@@ -262,20 +279,9 @@ body {
         width: 100%;
     }
 
-        .body-wrap.edit #panelsList {
-            display: none;
+        .toolbar-wrap .buttonsList li {
+            display: inline-block;
         }
-        
-        .body-wrap.edit .header-wrap .buttonsList{
-            display: none;
-        }
-        .body-wrap.edit .header-wrap #confirmList {
-            display: block;
-        }
-
-            .toolbar-wrap .buttonsList li {
-                display: inline-block;
-            }
 
 
         .body-wrap.edit-slider .header-wrap{

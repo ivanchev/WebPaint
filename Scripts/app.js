@@ -2,15 +2,11 @@
     baseUrl: "scripts"
 });
 
-define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors', 'slider'], function (
-    FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
+define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors', 'slider'], function (
+    View, FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 
     //#region Helpers
-
-    function isTouch() {
-        return 'ontouchstart' in window;
-    }
 
     function applyCache(command) {
         Slider.hide();
@@ -22,7 +18,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     function applyFilter(command) {
         Filters[command](canvas);
 
-        if (!isTouch()) {
+        if (!View.isTouch()) {
             Cache.store();
         }
     }
@@ -31,7 +27,7 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
         Transforms[command](canvas);
         Zoom.refreshZoomWrap();
 
-        if (!isTouch()) {
+        if (!View.isTouch()) {
             Cache.store();
         }
     }
@@ -41,14 +37,14 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
         Cache.current();
 
         var resetState = function() {
-            $(".buttonsListSecondary .selected").removeClass("selected");
+            $(".toolbar-secondary-wrap .selected").removeClass("selected");
             $(".body-wrap").removeClass("edit-slider");
         };
 
         Slider.show(canvas, function changeCallback(x, imageData) {
             Color[command](canvas, imageData, x);
         }, function okCallback() {
-            if (!isTouch()) {
+            if (!View.isTouch()) {
                 Cache.store();
             }
 
@@ -69,6 +65,8 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
         Cache.init(canvas);
 
         Zoom.init(canvas, zoomChanged);
+
+        View.init($(".body-wrap"));
     }
 
     function zoomChanged(zoomLevel) {
@@ -235,22 +233,16 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
 
     //#region Mobile Confirm
 
-    function finishEdit() {
-        $(".body-wrap").removeClass("edit");
-        $(".buttonsListSecondary").hide();
-        $(".selected").removeClass("selected");
-    }
-
     applyButton.onclick = function() {
         Cache.store();
 
-        finishEdit();
+        View.restore();
     };
 
     restoreButton.onclick = function() {
         Cache.current();
 
-        finishEdit();
+        View.restore();
     };
 
     //#endregion
@@ -258,19 +250,13 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
     //#region Toolbar
 
     function changePanel(panel, button) {
-        $(".buttonsListSecondary").hide();
-        $(".selected").removeClass("selected");
+        View.show(panel, button);
 
-        Slider.hide();
-        Cache.current();
-        Crop.hide();
-
-        if (panel) {
-            $(panel).show();
-            $(".body-wrap").addClass("edit");
+        if (!View.isTouch()) {
+            Slider.hide();
+            Cache.current();
+            Crop.hide();
         }
-
-        $(button).addClass("selected");
     }
 
     transformButton.onclick = function() {
@@ -296,11 +282,11 @@ define(["fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', '
 
         Crop.crop(canvas, Zoom.getZoomLevel(), function okCallback() {
             Zoom.refreshZoomWrap();
-            $(".body-wrap").removeClass("edit").removeClass("edit-slider");
+            $(".body-wrap").removeClass("edit-slider");
 
             Cache.store();
         }, function cancelCallback() {
-            $(".body-wrap").removeClass("edit").removeClass("edit-slider");
+            $(".body-wrap").removeClass("edit-slider");
         });
     };
 
