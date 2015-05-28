@@ -68,7 +68,7 @@
             });
         } else {
             toolbarSecondary.find("ul").hide();
-            toolbarPrimary.find("ul.selected").removeClass("selected");
+            toolbar.find(".selected").removeClass("selected");
 
             $(panel).show();
 
