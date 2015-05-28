@@ -94,6 +94,10 @@ body {
     right: 0;
     overflow: scroll;
     background-color: lightgrey;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
     .canvas-wrap .zoom-wrap {
@@ -101,6 +105,11 @@ body {
         position: relative;
         margin: auto;
     }
+    .canvas-wrap .zoom-wrap.center{
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
 
     .canvas-wrap canvas {
         background-color: white;

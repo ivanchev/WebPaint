@@ -70,9 +70,14 @@
 
     function refreshZoomWrap() {
         var ratio = zoomLevel / 100;
+        var width = canvas.width * ratio;
+        var height = canvas.height * ratio;
+        var contentHeight = $(canvas.parentNode.parentNode).height();
 
-        canvas.parentNode.style.width = canvas.width * ratio + "px";
-        canvas.parentNode.style.height = canvas.height * ratio + "px";
+        canvas.parentNode.style.width = width + "px";
+        canvas.parentNode.style.height = height + "px";
+
+        $(".zoom-wrap").toggleClass("center", (contentHeight > height));
     }
 
     function stepZoom(direction) {
