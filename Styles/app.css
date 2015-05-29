@@ -118,25 +118,48 @@ body {
     }
 
 .icon {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     display: block;
     margin: auto;
-    background-image: url('Content/upload.png');
+    background-image: url('Content/sprite.png');
     background-repeat: no-repeat;
 }
 
-.iconUpload{
-    background-image: url('Content/upload.png');
-}
-
-.iconUndo {
-    /*background-position: -128px -320px;*/
-}
-
-.iconRedo {
-    /*background-position: -128px -288px;*/
-}
+.iconUpload { background-position: 0px;}
+.iconDownload { background-position: -26px;}
+.iconUndo { background-position: -52px;}
+.iconRedo { background-position: -78px; }
+.iconReset { background-position: -104px;}
+.iconZoomOut { background-position: -130px;}
+.iconZoomIn { background-position: -156px;}
+.iconZoomFit { background-position: -182px;}
+.iconTransform { background-position: -208px;}
+.iconCrop { background-position: -234px;}
+.iconFilter { background-position: -260px;}
+.iconColor { background-position: -286px;}
+.iconFlipHorizontal { background-position: -312px;}
+.iconflipVertical { background-position: -338px;}
+.iconRotate90 { background-position: -364px;}
+.iconRotate180 { background-position: -390px;}
+.iconRotate270 { background-position: -416px;}
+.iconInvert { background-position: -442px;}
+.iconGrayscale { background-position: -468px;}
+.iconBlur { background-position: -494px;}
+.iconSharpen { background-position: -520px;}
+.iconEmboss { background-position: -546px;}
+.iconEdge { background-position: -572px;}
+.iconSobel { background-position: -598px;}
+.iconErode { background-position: -624px;}
+.iconDilate { background-position: -650px;}
+.iconMedian { background-position: -676px;}
+.iconBrightness { background-position: -702px;}
+.iconContrast { background-position: -728px;}
+.iconHue { background-position: -754px;}
+.iconSaturation { background-position: -780px;}
+.iconThreshold { background-position: -806px;}
+.iconOK { background-position: -832px;}
+.iconCancel { background-position: -858px;}
 
 
 .crop-box {
@@ -295,6 +318,12 @@ body {
         left: 0;
         width: 100%;
     }
+
+        .header-wrap #confirmList,
+        .toolbar-wrap .buttonsList {
+            text-align: center;
+            float: none;
+        }
 
         .toolbar-wrap .buttonsList li {
             display: inline-block;
