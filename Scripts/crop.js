@@ -61,18 +61,23 @@
                 okCallback();
             });
 
-        box.on("mousedown", ".crop-dot", function(e) {
-            var x = e.clientX;
-            var y = e.clientY;
+        var isTouch = 'ontouchstart' in window;
+        var DOWN = isTouch ? "touchstart" : "mousedown";
+        var MOVE = isTouch ? "touchmove" : "mousemove";
+        var END = isTouch ? "touchend" : "mouseup";
+
+        box.on(DOWN, ".crop-dot", function(e) {
+            var x = isTouch ? e.originalEvent.touches[0].clientX : e.clientX;
+            var y = isTouch ? e.originalEvent.touches[0].clientY : e.clientY;
             var dot = $(this);
             var boxSize = getBoxDimensions();
 
             $(document)
-                .on("mousemove.crop", function(e) {
+                .on(MOVE + ".crop", function(e) {
                     e.preventDefault();
 
-                    var deltaX = e.clientX - x;
-                    var deltaY = e.clientY - y;
+                    var deltaX = (isTouch ? e.originalEvent.touches[0].clientX : e.clientX) - x;
+                    var deltaY = (isTouch ? e.originalEvent.touches[0].clientY : e.clientY) - y;
 
                     var width;
                     var height;
@@ -117,7 +122,7 @@
                         .css("top", top)
                         .css("left", left);
                 })
-                .on("mouseup.crop", function(e) {
+                .on(END + ".crop", function(e) {
                     $(document).off(".crop");
                 });
         });
