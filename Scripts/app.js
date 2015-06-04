@@ -41,7 +41,6 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
         var resetState = function() {
             $(".toolbar-secondary-wrap .selected").removeClass("selected");
-            $(".body-wrap").removeClass("edit-slider");
         };
 
         Slider.show(canvas, function changeCallback(x, imageData) {
@@ -57,8 +56,6 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
             resetState();
         });
-
-        $(".body-wrap").addClass("edit-slider");
 
         $(button).parent().find(".selected").removeClass("selected");
         $(button).addClass("selected");
@@ -287,15 +284,12 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
             Zoom.fitZoom();
         }
 
-        $(".body-wrap").addClass("edit edit-slider");
-
         Crop.crop(canvas, Zoom.getZoomLevel(), function okCallback() {
             Zoom.refreshZoomWrap();
-            $(".body-wrap").removeClass("edit-slider");
 
             Cache.store();
         }, function cancelCallback() {
-            $(".body-wrap").removeClass("edit-slider");
+
         });
     };
 

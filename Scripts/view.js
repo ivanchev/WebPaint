@@ -21,7 +21,7 @@
 
     function transition(toobarCallback, headerCallback) {
         toolbar.animate({
-            bottom: "-70px"
+            bottom: "-60px"
         }, animationDuration, function() {
             toobarCallback();
 
@@ -31,7 +31,7 @@
         });
 
         header.animate({
-            top: "-70px"
+            top: "-60px"
         }, animationDuration, function() {
             headerCallback();
 
@@ -51,6 +51,7 @@
         }, function headerCallback() {
             header.find("ul").show();
             $("#confirmList").hide();
+            $("#zoomList").hide();
         });
     }
 
@@ -60,8 +61,8 @@
                 if (panel) {
                     $(panel).show();
                     toolbarSecondary.show();
-                    toolbarPrimary.hide();
                 }
+                toolbarPrimary.hide();
             }, function headerCallback() {
                 header.find("ul").hide();
                 $("#confirmList").show();

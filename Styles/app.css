@@ -11,36 +11,8 @@ body {
     background-color: #393F4D;
 }
 
-.header-wrap {
+.header-wrap{
     position: relative;
-    height: 80px;
-    background-color: #040B13;
-}
-
-.header-wrap .header-logo{
-    background-color: #06070B;
-    width: 200px;
-    height: 100%;
-    float: left;
-    color: white;
-    text-align: center;
-    font-size: 35px;
-    line-height: 80px;
-}
-
-.header-wrap .buttonsList {
-    float: left;
-}
-
-.header-wrap .buttonsList li:hover {
-    background-color: #252C36;
-}
-
-.header-wrap .buttonsList#zoomList {
-    float: right;
-}
-.header-wrap .buttonsList#confirmList {
-    display: none;
 }
 
 .buttonsList {
@@ -51,17 +23,12 @@ body {
 }
 
 .buttonsList li {
-    background-color: #10191E;
     cursor: pointer;
     position: relative;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
     text-align: center;
     overflow: hidden;
     display: inline-block;
     font-size: 15px;
-    border-right: 1px solid #040B13;
     color: white;
     box-sizing: border-box;
 }
@@ -77,6 +44,10 @@ body {
     cursor: pointer;
 }
 
+.header-wrap .buttonsList#confirmList {
+    display: none;
+}
+
 .content-wrap {
     position: absolute;
     top: 80px;
@@ -90,6 +61,25 @@ body {
     width: 200px;
 }
 
+    .slider-wrap .slider-line{
+        width: 200px;
+        height: 4px;
+        background-color: #84888B;
+        position: relative;
+        top: 48px;
+        left: 50px;
+    }
+    .slider-wrap .slider-handle{
+        width: 25px;
+        height: 25px;
+        background-color: #FFFFFD;
+        position: relative;
+        top: 46px;
+        left: 100px;
+        margin-top: -12.5px;
+        margin-left: 37.5px;
+        border-radius: 15px;
+    }
 
 .canvas-wrap {
     position: absolute;
@@ -138,6 +128,7 @@ body {
     background-repeat: no-repeat;
 }
 
+/* Icons */
 .iconUpload { background-position: 0px;}
 .iconDownload { background-position: -26px;}
 .iconUndo { background-position: -52px;}
@@ -173,7 +164,7 @@ body {
 .iconOK { background-position: -832px;}
 .iconCancel { background-position: -858px;}
 
-
+/* Crop Box*/
 .crop-box {
     color: white;
     position: absolute;
@@ -239,6 +230,43 @@ body {
 }
 
     /* Desktop */
+    .desktopDevice .header-wrap .header-logo{
+        background-color: #06070B;
+        width: 200px;
+        height: 100%;
+        float: left;
+        color: white;
+        text-align: center;
+        font-size: 35px;
+        line-height: 80px;
+    }
+
+    .desktopDevice .header-wrap {
+        height: 80px;
+        background-color: #040B13;
+    }
+
+    .desktopDevice .header-wrap .buttonsList {
+        float: left;
+    }
+
+    .desktopDevice .header-wrap .buttonsList li:hover {
+        background-color: #252C36;
+    }
+
+    .desktopDevice .header-wrap .buttonsList#zoomList {
+        float: right;
+    }
+
+    .desktopDevice .buttonsList li {
+        background-color: #10191E;
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        border-right: 1px solid #040B13;
+    }
+
+
     .desktopDevice .toolbar-wrap .buttonsList li {
         display: block;
         border-right: 0;
@@ -323,25 +351,6 @@ body {
         height: 100%;
         position: relative;
     }
-    .desktopDevice .slider-wrap .slider-line{
-        width: 200px;
-        height: 4px;
-        background-color: #84888B;
-        position: relative;
-        top: 48px;
-        left: 50px;
-    }
-    .desktopDevice .slider-wrap .slider-handle{
-        width: 25px;
-        height: 25px;
-        background-color: #FFFFFD;
-        position: relative;
-        top: 46px;
-        left: 100px;
-        margin-top: -12.5px;
-        margin-left: 37.5px;
-        border-radius: 15px;
-    }
 
     .desktopDevice .toolbar-slider-wrap .buttons-wrap {
         float: right;
@@ -353,32 +362,45 @@ body {
     
 
     /* Touch */
-    .touchDevice .buttonsList{
-        height: 50px;
-        white-space: nowrap;
-    }
-
-    .touchDevice .toolbar-wrap {
-        width: 100%;
-        height: 70px;
-        bottom: 0;
-        z-index: 2;
-        overflow: hidden; 
-        background-color: transparent;
-        background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    .touchDevice .header-wrap .header-logo{
+        display: none;
     }
 
     .touchDevice .header-wrap {
         background-color: transparent;
-        background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+        background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
         z-index: 2;
+        text-align: center;
+        height: 60px;
     }
-    .touchDevice .header-wrap #zoomList li {
-        display: none;
-    }
-    .touchDevice .header-wrap #zoomList #zoomFitButton {
+
+    .touchDevice .buttonsList{
+        white-space: nowrap;
         display: inline-block;
     }
+    .touchDevice .buttonsList li{
+        width: 60px;
+        height: 60px;
+        line-height: 50px;
+        font-size: 14px;
+    }
+    .touchDevice .icon {
+        top: 17px;
+    }
+
+    .touchDevice .header-wrap #zoomList {
+        display: none;
+    }
+    
+    .touchDevice #restoreButton{
+        display: block;
+        float: left;
+    }
+    .touchDevice #applyButton{
+        display: block;
+        float: right;
+    }
+
 
     .touchDevice .content-wrap{
         top: 0;
@@ -390,42 +412,54 @@ body {
         width: 100%;
     }
 
-        .touchDevice .header-wrap #confirmList,
-        .touchDevice .toolbar-wrap .buttonsList {
-            text-align: center;
-            float: none;
+    .touchDevice .toolbar-wrap {
+        width: 100%;
+        height: 70px;
+        bottom: 0;
+        z-index: 2;
+        overflow: hidden; 
+        background-color: transparent;
+        background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+    }
+
+        .touchDevice .toolbar-wrap .buttonsList li{
+            width: 70px;
+            height: 70px;
+            line-height: 60px;
         }
 
-        .touchDevice .toolbar-wrap .buttonsList li {
-            display: inline-block;
-        }
-        
+        .touchDevice .toolbar-wrap .toolbar-primary-wrap,
         .touchDevice .toolbar-wrap .toolbar-secondary-wrap {
-            display: block;
+            text-align:center;
+        }
+
+        .touchDevice .toolbar-wrap .toolbar-secondary-wrap {
             position: relative;
-            padding: 10px;
             overflow-x: auto;
         }
 
-        .body-wrap.edit-slider.touchDevice .header-wrap{
-            display: none;
-        }
-        .body-wrap.edit-slider.touchDevice  .content-wrap{
-            top: 0;
-        }
 
-        .body-wrap.edit-slider.touchDevice .toolbar-slider-wrap {
+        .touchDevice .toolbar-slider-wrap {
             position: initial;
-            text-align: initial;
+            text-align: center;
         }
-        .body-wrap.edit-slider.touchDevice .slider-wrap {
+        .touchDevice .slider-wrap {
             position: absolute;
             bottom: 70px;
+            height: 70px;
+            width: 300px;
         }
-        .body-wrap.edit-slider.touchDevice .toolbar-slider-wrap .buttons-wrap {
+        .touchDevice .slider-wrap .slider-line{
+            top: 33px;
+        }
+        .touchDevice .slider-wrap .slider-handle{
+            top: 31px;
+        }
+        .touchDevice .toolbar-slider-wrap .buttons-wrap {
             position:absolute;
             width: 100%;
-            background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+            height: 60px;
+            background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
         }
 
 

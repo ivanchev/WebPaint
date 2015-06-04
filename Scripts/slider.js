@@ -4,6 +4,12 @@
     var slider;
 
     function show(cv, changeCallback, okCallback, cancelCallback) {
+        var isTouch = 'ontouchstart' in window;
+
+        if (isTouch) {
+            $(".header-wrap").hide();
+        }
+
         slider = createSlider();
 
         canvas = cv;
@@ -31,7 +37,6 @@
             });
 
         if (changeCallback) {
-            var isTouch = 'ontouchstart' in window;
             var DOWN = isTouch ? "touchstart" : "mousedown";
             var MOVE = isTouch ? "touchmove" : "mousemove";
             var END = isTouch ? "touchend" : "mouseup";
@@ -73,6 +78,10 @@
             slider
                 .off()
                 .remove();
+        }
+
+        if ('ontouchstart' in window) {
+            $(".header-wrap").show();
         }
 
         slider = null;
