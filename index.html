@@ -10,27 +10,41 @@
     <div class="loading-screen"></div>
     <div class="body-wrap">
         <div class="header-wrap">
+            <div class="header-logo">Web.Paint</div>
             <ul class="buttonsList">
                 <li id="uploadButton">
                     <span class="icon iconUpload"></span>Upload
                     <input type='file' id='loadFile' />
+                </li><li id="downloadButton"><span class="icon iconDownload">
+                    </span>Download
                 </li>
-                <li id="downloadButton"><span class="icon iconDownload"></span>Download</li>
             </ul>
             <ul class="buttonsList">
-                <li id="undoButton"><span class="icon iconUndo"></span>Undo</li>
-                <li id="redoButton"><span class="icon iconRedo"></span>Redo</li>
-                <li id="resetButton"><span class="icon iconReset"></span>Reset</li>
+                <li id="undoButton">
+                    <span class="icon iconUndo"></span>Undo
+                </li><li id="redoButton">
+                    <span class="icon iconRedo"></span>Redo
+                </li><li id="resetButton">
+                    <span class="icon iconReset"></span>Reset
+                </li>
             </ul>
             <ul id="confirmList" class="buttonsList">
-                <li id="restoreButton"><span class="icon iconCancel"></span>Cancel</li>
-                <li id="applyButton"><span class="icon iconOK"></span>OK</li>
+                <li id="restoreButton">
+                    <span class="icon iconCancel"></span>Cancel
+                </li><li id="applyButton">
+                    <span class="icon iconOK"></span>OK
+                </li>
             </ul>
             <ul id="zoomList" class="buttonsList">
-                <li id="zoomOutButton"><span class="icon iconZoomOut"></span>Out</li>
-                <li>100%</li>
-                <li id="zoomInButton"><span class="icon iconZoomIn"></span>In</li>
-                <li id="zoomFitButton"><span class="icon iconZoomFit"></span>Fit</li>
+                <li id="zoomOutButton">
+                    <span class="icon iconZoomOut"></span>Out
+                </li><li>
+                    100%
+                </li><li id="zoomInButton">
+                    <span class="icon iconZoomIn"></span>In
+                </li><li id="zoomFitButton">
+                    <span class="icon iconZoomFit"></span>Fit
+                </li>
             </ul>
         </div>
 
@@ -39,10 +53,10 @@
             <div class="toolbar-wrap">
                 <div class="toolbar-primary-wrap">
                     <ul class="buttonsList">
-                        <li id="transformButton"><span class="icon iconTransform"></span>Transform</li>
-                        <li id="cropButton"><span class="icon iconCrop"></span>Crop</li>
-                        <li id="filterButton"><span class="icon iconFilter"></span>Filter</li>
-                        <li id="colorButton"><span class="icon iconColor"></span>Color</li>
+                        <li id="transformButton"><span class="bar"></span><span class="icon iconTransform"></span>Transform</li>
+                        <li id="cropButton"><span class="bar"></span><span class="icon iconCrop"></span>Crop</li>
+                        <li id="filterButton"><span class="bar"></span><span class="icon iconFilter"></span>Filter</li>
+                        <li id="colorButton"><span class="bar"></span><span class="icon iconColor"></span>Color</li>
                     </ul>
                 </div>
                 <div class="toolbar-secondary-wrap">
