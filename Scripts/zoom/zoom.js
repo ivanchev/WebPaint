@@ -57,10 +57,6 @@
     }
 
     function applyZoom() {
-        var ratio = zoomLevel / 100;
-
-        canvas.style.transform = "scale(" + ratio + ")";
-
         refreshZoomWrap();
 
         if (callback) {
