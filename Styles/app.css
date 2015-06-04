@@ -238,61 +238,6 @@ body {
     display: inline-block;
 }
 
-.toolbar-slider-wrap {
-    height: 70px;
-    z-index: 2;
-    position: absolute;
-    left: 140px;
-    bottom: 0;
-    right: 0;
-    text-align:center;
-    overflow: hidden;
-
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-
-    border: 1px solid black;
-}
-
-    .toolbar-slider-wrap ul {
-        height: 50px;
-    }
-
-    .toolbar-slider-wrap li {
-        display: inline-block;
-    }
-    
-    .toolbar-slider-wrap .slider-wrap {
-        display: inline-block;
-        width: 300px;
-        height: 68px;
-        position: relative;
-
-        border: 1px solid black;
-    }
-    .slider-wrap .slider-line{
-        width: 200px;
-        height: 2px;
-        background-color: black;
-        position: relative;
-        top: 34px;
-        left: 50px;
-    }
-    .slider-wrap .slider-handle{
-        width: 25px;
-        height: 25px;
-        background-color: black;
-        position: relative;
-        top: 35px;
-        left: 100px;
-        margin-top: -12.5px;
-        margin-left: 37.5px;
-        border-radius: 15px;
-    }
-
-    .toolbar-slider-wrap .buttons-wrap {
-        display: inline-block;
-    }
-
     /* Desktop */
     .desktopDevice .toolbar-wrap .buttonsList li {
         display: block;
@@ -357,6 +302,55 @@ body {
     .desktopDevice li#colorButton .bar {
         background-color: #FCAF15;
     }
+
+
+.desktopDevice .toolbar-slider-wrap {
+    height: 100px;
+    z-index: 2;
+    position: absolute;
+    left: 200px;
+    bottom: 0;
+    right: 0;
+    text-align:center;
+    overflow: hidden;
+
+    background-color: rgba(25, 32, 42, 0.8);
+}
+
+    .desktopDevice .slider-wrap {
+        float: left;
+        width: 300px;
+        height: 100%;
+        position: relative;
+    }
+    .desktopDevice .slider-wrap .slider-line{
+        width: 200px;
+        height: 4px;
+        background-color: #84888B;
+        position: relative;
+        top: 48px;
+        left: 50px;
+    }
+    .desktopDevice .slider-wrap .slider-handle{
+        width: 25px;
+        height: 25px;
+        background-color: #FFFFFD;
+        position: relative;
+        top: 46px;
+        left: 100px;
+        margin-top: -12.5px;
+        margin-left: 37.5px;
+        border-radius: 15px;
+    }
+
+    .desktopDevice .toolbar-slider-wrap .buttons-wrap {
+        float: right;
+    }
+
+    .desktopDevice .toolbar-slider-wrap li {
+        display: inline-block;
+    }
+    
 
     /* Touch */
     .touchDevice .buttonsList{
