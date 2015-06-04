@@ -6,6 +6,9 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     View, FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 
+    $(".body-wrap").addClass(View.isTouch() ? "touchDevice" : "desktopDevice");
+    $(".loading-screen").remove();
+
     //#region Helpers
 
     function applyCache(command) {
@@ -272,7 +275,13 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     };
 
     cropButton.onclick = function() {
-        changePanel(null, this);
+        View.show(null, this);
+
+        if (!View.isTouch()) {
+            Slider.hide();
+            Cache.current();
+            Crop.hide();
+        }
 
         if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
             Zoom.fitZoom();

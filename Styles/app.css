@@ -6,6 +6,14 @@ body {
     margin: 0;
 }
 
+.loading-screen{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: lightblue;
+    z-index: 10;
+}
+
 .body-wrap {
     height: 100%;
 }
@@ -281,23 +289,23 @@ body {
         display: inline-block;
     }
 
-@media screen and (min-width: 721px) {
-    .toolbar-primary-wrap{
+    /* Desktop */
+    .desktopDevice .toolbar-primary-wrap{
         display:inline-block;
         float: left;
     }
 
-    .toolbar-secondary-wrap{
+    .desktopDevice .toolbar-secondary-wrap{
         display:inline-block;
     }
-}
-@media screen and (max-width: 720px) {
-    .buttonsList{
+
+    /* Touch */
+    .touchDevice .buttonsList{
         height: 50px;
         white-space: nowrap;
     }
 
-    .toolbar-wrap {
+    .touchDevice .toolbar-wrap {
         width: 100%;
         height: 70px;
         bottom: 0;
@@ -307,90 +315,89 @@ body {
         background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     }
 
-    .header-wrap {
+    .touchDevice .header-wrap {
         background-color: transparent;
         background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
         z-index: 2;
     }
-    .header-wrap #zoomList li {
+    .touchDevice .header-wrap #zoomList li {
         display: none;
     }
-    .header-wrap #zoomList #zoomFitButton {
+    .touchDevice .header-wrap #zoomList #zoomFitButton {
         display: inline-block;
     }
 
-    .content-wrap{
+    .touchDevice .content-wrap{
         top: 0;
         overflow: hidden;
     }
 
-    .canvas-wrap {
+    .touchDevice .canvas-wrap {
         left: 0;
         width: 100%;
     }
 
-        .header-wrap #confirmList,
-        .toolbar-wrap .buttonsList {
+        .touchDevice .header-wrap #confirmList,
+        .touchDevice .toolbar-wrap .buttonsList {
             text-align: center;
             float: none;
         }
 
-        .toolbar-wrap .buttonsList li {
+        .touchDevice .toolbar-wrap .buttonsList li {
             display: inline-block;
         }
         
-        .toolbar-wrap .toolbar-secondary-wrap {
+        .touchDevice .toolbar-wrap .toolbar-secondary-wrap {
             display: block;
             position: relative;
             padding: 10px;
             overflow-x: auto;
         }
 
-        .body-wrap.edit-slider .header-wrap{
+        .body-wrap.edit-slider.touchDevice .header-wrap{
             display: none;
         }
-        .body-wrap.edit-slider .content-wrap{
+        .body-wrap.edit-slider.touchDevice  .content-wrap{
             top: 0;
         }
 
-        .body-wrap.edit-slider .toolbar-slider-wrap {
+        .body-wrap.edit-slider.touchDevice .toolbar-slider-wrap {
             position: initial;
             text-align: initial;
         }
-        .body-wrap.edit-slider .slider-wrap {
+        .body-wrap.edit-slider.touchDevice .slider-wrap {
             position: absolute;
             bottom: 70px;
         }
-        .body-wrap.edit-slider .toolbar-slider-wrap .buttons-wrap {
+        .body-wrap.edit-slider.touchDevice .toolbar-slider-wrap .buttons-wrap {
             position:absolute;
             width: 100%;
             background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
         }
 
 
-    .crop-dot {
+    .touchDevice .crop-dot {
         width: 30px;
         height: 30px;
         border-radius: 15px;
     }
 
-    .crop-dot-TL {
+    .touchDevice .crop-dot-TL {
         margin-top: -15px;
         margin-left: -15px;
     }
 
-    .crop-dot-TR {
+    .touchDevice .crop-dot-TR {
         margin-top: -15px;
         margin-right: -15px;
     }
 
-    .crop-dot-BL {
+    .touchDevice .crop-dot-BL {
         margin-bottom: -15px;
         margin-left: -15px;
     }
 
-    .crop-dot-BR {
+    .touchDevice .crop-dot-BR {
         margin-bottom: -15px;
         margin-right: -15px;
     }
-}

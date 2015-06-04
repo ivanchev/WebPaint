@@ -52,12 +52,12 @@
                             deltaX = Math.max(-100, Math.min(100, (deltaX)));
 
                             $(handle).css("left", 100 + deltaX);
-
-                            var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
-                            changeCallback(deltaX, imageData);
                         })
                         .on(END + ".slider", function(e) {
                             $(document).off(".slider");
+
+                            var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
+                            changeCallback(deltaX, imageData);
                         });
                 });
         }
