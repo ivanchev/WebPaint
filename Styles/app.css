@@ -86,7 +86,7 @@ body {
     height: 100%;
     left: 200px;
     right: 0;
-    overflow: scroll;
+    overflow: hidden;
 
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;

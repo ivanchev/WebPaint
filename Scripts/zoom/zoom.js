@@ -29,6 +29,26 @@
     function initEvents() {
         disposeEvents();
 
+        $(canvas).on("mousedown.zoom", function(e) {
+            var canvasWrap = $(".canvas-wrap");
+            var startX = e.clientX;
+            var startY = e.clientY;
+            var startScrollX = canvasWrap.scrollLeft();
+            var startScrollY = canvasWrap.scrollTop();
+
+            $(canvas)
+                .on("mousemove.zoom", function(e) {
+                    e.preventDefault();
+
+                    canvasWrap
+                        .scrollLeft(startScrollX - (e.clientX - startX))
+                        .scrollTop(startScrollY - (e.clientY - startY));
+                })
+                .on("mouseup.zoom", function(e) {
+                    $(canvas).off("mouseup.zoom").off("mousemove.zoom");
+                });
+        });
+
         $(document)
             .on("touchstart.zoom", function(e) {
                 if (e.originalEvent.touches.length == 2) {
@@ -54,6 +74,7 @@
 
     function disposeEvents() {
         $(document).off(".zoom");
+        $(canvas).off(".zoom");
     }
 
     function applyZoom() {
