@@ -2,7 +2,7 @@
     baseUrl: "scripts"
 });
 
-define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors', 'slider'], function (
+define(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors/colors', 'slider'], function (
     View, FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 
@@ -11,54 +11,10 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
     //#region Helpers
 
-    function applyCache(command) {
+    function reset() {
         Slider.hide();
         Crop.hide();
-        Cache[command]();
-        Zoom.refreshZoomWrap();
-    }
-
-    function applyFilter(command) {
-        Filters[command](canvas);
-
-        if (!View.isTouch()) {
-            Cache.store();
-        }
-    }
-
-    function applyTransform(command) {
-        Transforms[command](canvas);
-        Zoom.refreshZoomWrap();
-
-        if (!View.isTouch()) {
-            Cache.store();
-        }
-    }
-
-    function applyColor(button, command) {
-        Slider.hide();
         Cache.current();
-
-        var resetState = function() {
-            $(".toolbar-secondary-wrap .selected").removeClass("selected");
-        };
-
-        Slider.show(canvas, function changeCallback(x, imageData) {
-            Color[command](canvas, imageData, x);
-        }, function okCallback() {
-            if (!View.isTouch()) {
-                Cache.store();
-            }
-
-            resetState();
-        }, function cancelCallback() {
-            Cache.current();
-
-            resetState();
-        });
-
-        $(button).parent().find(".selected").removeClass("selected");
-        $(button).addClass("selected");
     }
 
     function init() {
@@ -83,9 +39,7 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     var imageName;
 
     loadFile.onchange = function () {
-        Slider.hide();
-        Crop.hide();
-        Cache.current();
+        reset();
 
         if (!this.files.length) {
             return;
@@ -97,9 +51,7 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     };
 
     downloadButton.onclick = function() {
-        Slider.hide();
-        Crop.hide();
-        Cache.current();
+        reset();
 
         FileIO.saveFile(canvas, imageName);
     };
@@ -107,6 +59,14 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     //#endregion
 
     //#region Filters
+
+    function applyFilter(command) {
+        Filters[command](canvas);
+
+        if (!View.isTouch()) {
+            Cache.store();
+        }
+    }
 
     invertButton.onclick = function () {
         applyFilter("invert");
@@ -152,6 +112,15 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
     //#region Transforms
 
+    function applyTransform(command) {
+        Transforms[command](canvas);
+        Zoom.refreshZoomWrap();
+
+        if (!View.isTouch()) {
+            Cache.store();
+        }
+    }
+
     flipHorizontalButton.onclick = function() {
         applyTransform("flipHorizontal");
     };
@@ -174,8 +143,14 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
     //#endregion
 
-
     //#region Cache
+
+    function applyCache(command) {
+        Slider.hide();
+        Crop.hide();
+        Cache[command]();
+        Zoom.refreshZoomWrap();
+    }
 
     undoButton.onclick = function () {
         applyCache("undo");
@@ -209,6 +184,32 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
     //#region Color
 
+    function applyColor(button, command) {
+        Slider.hide();
+        Cache.current();
+
+        var resetState = function() {
+            $(".toolbar-secondary-wrap .selected").removeClass("selected");
+        };
+
+        Slider.show(canvas, function changeCallback(x, imageData) {
+            Color[command](canvas, imageData, x);
+        }, function okCallback() {
+            if (!View.isTouch()) {
+                Cache.store();
+            }
+
+            resetState();
+        }, function cancelCallback() {
+            Cache.current();
+
+            resetState();
+        });
+
+        $(button).parent().find(".selected").removeClass("selected");
+        $(button).addClass("selected");
+    }
+
     brightnessButton.onclick = function() {
         applyColor(this, "brightness");
     };
@@ -231,6 +232,25 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
 
     //#endregion
 
+    //#region Crop
+
+    function crop() {
+        if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
+            Zoom.fitZoom();
+        }
+
+        Crop.crop(canvas, Zoom.getZoomLevel(),
+            function okCallback() {
+                Zoom.refreshZoomWrap();
+
+                Cache.store();
+            }, function cancelCallback() {
+
+            });
+    }
+
+    //#endregion
+
     //#region Mobile Confirm
 
     applyButton.onclick = function() {
@@ -250,13 +270,11 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     //#region Toolbar
 
     function changePanel(panel, button) {
-        View.show(panel, button);
-
         if (!View.isTouch()) {
-            Slider.hide();
-            Cache.current();
-            Crop.hide();
+            reset();
         }
+
+        View.show(panel, button);
     }
 
     transformButton.onclick = function() {
@@ -272,33 +290,16 @@ define(["view", "fileIO", "filters", "transforms", 'cache/cache', 'zoom/zoom', '
     };
 
     cropButton.onclick = function() {
-        View.show(null, this);
+        changePanel(null, this);
 
-        if (!View.isTouch()) {
-            Slider.hide();
-            Cache.current();
-            Crop.hide();
-        }
-
-        if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
-            Zoom.fitZoom();
-        }
-
-        Crop.crop(canvas, Zoom.getZoomLevel(), function okCallback() {
-            Zoom.refreshZoomWrap();
-
-            Cache.store();
-        }, function cancelCallback() {
-
-        });
+        crop();
     };
 
     //#endregion
-
-    init();
 
     window.onbeforeunload = function (e) {
         Zoom.disposeEvents();
     };
 
+    init();
 });
