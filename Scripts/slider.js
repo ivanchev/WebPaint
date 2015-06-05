@@ -90,7 +90,7 @@
     }
 
     function createSlider() {
-        var element = $('<div class="toolbar-slider-wrap">' +
+        var element = $('<div class="actions-wrap">' +
                 '<div class="slider-wrap">' +
                     '<div class="slider-line"></div>' +
                     '<div class="slider-handle"></div>' +

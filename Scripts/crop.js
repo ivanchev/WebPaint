@@ -33,22 +33,22 @@
         box = $("<div class='crop-box'>")
             .width(containerWidth)
             .height(containerHeight)
+            .append("<div class='crop-dot crop-dot-TL'></div>" +
+                "<div class='crop-dot crop-dot-TR'></div>" +
+                "<div class='crop-dot crop-dot-BL'></div>" +
+                "<div class='crop-dot crop-dot-BR'></div>")
             .appendTo(container);
 
-        $("<div class='crop-dot crop-dot-TL'></div>" +
-            "<div class='crop-dot crop-dot-TR'></div>" +
-            "<div class='crop-dot crop-dot-BL'></div>" +
-            "<div class='crop-dot crop-dot-BR'></div>")
-            .appendTo(box);
-
-        actionsWrap = $("<div class='crop-actions'>" +
-            "<ul class='buttonsList'>" +
-                "<li id='cropCancel'><span class='icon iconCancel'></span>Cancel</li>" +
-                "<li id='cropOK'><span class='icon iconOK'></span>OK</li>" +
-            "</ul>")
-            .appendTo($(".canvas-wrap"))
+        actionsWrap = $('<div class="actions-wrap">' +
+                '<div class="buttons-wrap">' +
+                    '<ul class="buttonsList">' +
+                        '<li id="cropCancel"><span class="icon iconCancel"></span>Cancel</li>' +
+                        '<li id="cropOK"><span class="icon iconOK"></span>OK</li>' +
+                    '</ul>' +
+                '</div>' +
+            '</div>')
+            .appendTo($(".content-wrap"))
             .on("click", "#cropCancel", function() {
-
                 hide();
 
                 cancelCallback();
