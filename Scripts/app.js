@@ -239,13 +239,23 @@ define(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/cac
             Zoom.fitZoom();
         }
 
+        function restore() {
+            if (View.isTouch()) {
+                View.restore();
+            } else {
+                $("#cropButton").removeClass("selected");
+            }
+        }
+
         Crop.crop(canvas, Zoom.getZoomLevel(),
             function okCallback() {
                 Zoom.refreshZoomWrap();
 
                 Cache.store();
-            }, function cancelCallback() {
 
+                restore();
+            }, function cancelCallback() {
+                restore();
             });
     }
 

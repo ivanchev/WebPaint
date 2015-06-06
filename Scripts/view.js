@@ -43,13 +43,14 @@
 
     function restore() {
         transition(function toobarCallback() {
+            toolbar.show();
             toolbarSecondary
                 .hide()
                 .find("ul")
                 .hide();
             toolbarPrimary.show();
         }, function headerCallback() {
-            header.find("ul").show();
+            header.show().find("ul").show();
             $("#confirmList").hide();
             $("#zoomList").hide();
         });
@@ -61,11 +62,17 @@
                 if (panel) {
                     $(panel).show();
                     toolbarSecondary.show();
+                    toolbarPrimary.hide();
+                } else {
+                    toolbar.hide();
                 }
-                toolbarPrimary.hide();
             }, function headerCallback() {
-                header.find("ul").hide();
-                $("#confirmList").show();
+                if (panel) {
+                    header.find("ul").hide();
+                    $("#confirmList").show();
+                } else {
+                    header.hide();
+                }
             });
         } else {
             toolbarSecondary.find("ul").hide();
@@ -81,6 +88,7 @@
         init: init,
         isTouch: isTouch,
         restore: restore,
-        show: show
+        show: show,
+        transition: transition
     };
 });
