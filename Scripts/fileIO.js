@@ -1,4 +1,4 @@
-﻿define(function() {
+﻿define(["canvasToBlob", "fileSaver"], function() {
     function loadFile(input, canvas, callback) {
         var file;
         var fileReader;

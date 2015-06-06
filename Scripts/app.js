@@ -1,8 +1,12 @@
 ﻿requirejs.config({
-    baseUrl: "scripts"
+    baseUrl: "scripts",
+    paths: {
+      "canvasToBlob": "lib/canvastoblob",
+      "fileSaver": "lib/filesaver"
+    }
 });
 
-define(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors/colors', 'slider'], function (
+require(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/cache', 'zoom/zoom', 'crop', 'colors/colors', 'slider'], function (
     View, FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 

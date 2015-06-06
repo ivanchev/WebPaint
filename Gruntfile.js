@@ -15,10 +15,11 @@ module.exports = function (grunt) {
 		requirejs: {
 		  compile: {
 		    options: {
-			baseUrl: "Scripts/",
-			mainConfigFile: "Scripts/app.js",
-			name: "app",
-			out: "Dist/scripts.min.js"
+				baseUrl: "Scripts/",
+				mainConfigFile: "Scripts/app.js",
+				include: ["lib/almond", "app"],
+				name: "app",
+				out: "Dist/scripts.min.js"
 		    }
 		  }
 		},
