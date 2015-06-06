@@ -1,5 +1,4 @@
 ﻿define(function() {
-    var isTouch;
     var container;
     var toolbar;
     var toolbarPrimary;

@@ -20,12 +20,13 @@
             var r2, g2, b2;
             var indexMatrix = base.getIndexMatrix(canvas.width);
             var index;
+            var i, j, l;
 
-            for (var i = 0, l = data.length; i < l; i += 4) {
+            for (i = 0, l = data.length; i < l; i += 4) {
                 r = g = b = 0;
                 r2 = g2 = b2 = 0;
 
-                for(var j = 0; j < indexMatrix.length; j ++) {
+                for(j = 0; j < indexMatrix.length; j ++) {
                     index = i + indexMatrix[j];
 
                     if (index < 0 || index > l) {
@@ -37,7 +38,7 @@
                     b += baseImage[i + indexMatrix[j] + 2] * weightMatrixA[j];
                 }
 
-                for(var j = 0; j < indexMatrix.length; j ++) {
+                for(j = 0; j < indexMatrix.length; j ++) {
                     index = i + indexMatrix[j];
 
                     if (index < 0 || index > l) {
