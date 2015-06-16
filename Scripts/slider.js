@@ -97,8 +97,8 @@
                 '</div>' +
                 '<div class="buttons-wrap">' +
                     '<ul class="buttonsList">' +
-                        '<li id="CancelButton"><span class="icon iconCancel"></span>Cancel</li>' +
-                        '<li id="OKButton"><span class="icon iconOK"></span>OK</li>' +
+                        '<li id="OKButton"><span class="icon iconOK"></span></li>' +
+                        '<li id="CancelButton"><span class="icon iconCancel"></span></li>' +
                     '</ul>' +
                 '</div>' +
             '</div>').appendTo($(".content-wrap"));

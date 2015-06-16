@@ -37,7 +37,6 @@ require(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/ca
 
     //#endregion
 
-
     //#region File IO
 
     var imageName;

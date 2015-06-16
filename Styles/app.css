@@ -120,150 +120,157 @@ body {
 
 .icon {
     position: relative;
-    width: 26px;
-    height: 26px;
-    top: 27px;
+    top: 16px;
+    width: 48px;
+    height: 48px;
     display: block;
     margin: auto;
     background-image: url('Content/sprite.png');
     background-repeat: no-repeat;
 }
 
-/* Icons */
-.iconUpload {
-    background-position: 0px;
+.desktopDevice .buttonsList li:hover .icon {
+    background-position-y: -48px;
+}
+.desktopDevice .buttonsList li.selected:hover .icon {
+    background-position-y: 0px;
 }
 
+/* Icons */
 .iconDownload {
-    background-position: -26px;
+    background-position-x: -0px;
+}
+
+.iconUpload {
+    background-position-x: -48px;
 }
 
 .iconUndo {
-    background-position: -52px;
+    background-position-x: -96px;
 }
 
 .iconRedo {
-    background-position: -78px;
+    background-position-x: -144px;
 }
 
 .iconReset {
-    background-position: -104px;
+    background-position-x: -192px;
 }
 
 .iconZoomOut {
-    background-position: -130px;
+    background-position-x: -240px;
 }
 
 .iconZoomIn {
-    background-position: -156px;
+    background-position-x: -288px;
 }
 
 .iconZoomFit {
-    background-position: -182px;
+    background-position-x: -336px;
 }
 
 .iconTransform {
-    background-position: -208px;
+    background-position-x: -384px;
 }
 
 .iconCrop {
-    background-position: -234px;
+    background-position-x: -432px;
 }
 
 .iconFilter {
-    background-position: -260px;
+    background-position-x: -480px;
 }
 
 .iconColor {
-    background-position: -286px;
+    background-position-x: -528px;
 }
 
 .iconFlipHorizontal {
-    background-position: -312px;
+    background-position-x: -576px;
 }
 
 .iconflipVertical {
-    background-position: -338px;
+    background-position-x: -624px;
 }
 
 .iconRotate90 {
-    background-position: -364px;
+    background-position-x: -672px;
 }
 
 .iconRotate180 {
-    background-position: -390px;
+    background-position-x: -720px;
 }
 
 .iconRotate270 {
-    background-position: -416px;
+    background-position-x: -768px;
 }
 
 .iconInvert {
-    background-position: -442px;
+    background-position-x: -816px;
 }
 
 .iconGrayscale {
-    background-position: -468px;
+    background-position-x: -864px;
 }
 
 .iconBlur {
-    background-position: -494px;
+    background-position-x: -912px;
 }
 
 .iconSharpen {
-    background-position: -520px;
+    background-position-x: -960px;
 }
 
 .iconEmboss {
-    background-position: -546px;
+    background-position-x: -1008px;
 }
 
 .iconEdge {
-    background-position: -572px;
+    background-position-x: -1056px;
 }
 
 .iconSobel {
-    background-position: -598px;
+    background-position-x: -1104px;
 }
 
 .iconErode {
-    background-position: -624px;
+    background-position-x: -1152px;
 }
 
 .iconDilate {
-    background-position: -650px;
+    background-position-x: -1200px;
 }
 
 .iconMedian {
-    background-position: -676px;
+    background-position-x: -1248px;
 }
 
 .iconBrightness {
-    background-position: -702px;
+    background-position-x: -1296px;
 }
 
 .iconContrast {
-    background-position: -728px;
+    background-position-x: -1344px;
 }
 
 .iconHue {
-    background-position: -754px;
+    background-position-x: -1392px;
 }
 
 .iconSaturation {
-    background-position: -780px;
+    background-position-x: -1440px;
 }
 
 .iconThreshold {
-    background-position: -806px;
+    background-position-x: -1488px;
 }
 
 .iconOK {
-    background-position: -832px;
+    background-position-x: -1536px;
 }
 
 .iconCancel {
-    background-position: -858px;
+    background-position-x: -1584px;
 }
 
 /* Crop Box*/
@@ -348,7 +355,6 @@ body {
     background-color: #10191E;
     width: 80px;
     height: 80px;
-    line-height: 80px;
     border-right: 1px solid #040B13;
 }
 
@@ -380,6 +386,7 @@ body {
     .desktopDevice .toolbar-primary-wrap .buttonsList li {
         background-color: #151E27;
         height: 100px;
+        line-height: 58px;
     }
 
         .desktopDevice .toolbar-primary-wrap .buttonsList li .bar {
@@ -397,6 +404,7 @@ body {
         background-color: #252C36;
         height: 80px;
         border: 0;
+        line-height: 50px;
     }
 
 .desktopDevice li#transformButton.selected,
@@ -444,9 +452,14 @@ body {
 
     .desktopDevice .actions-wrap .buttons-wrap {
         float: right;
+        position: relative;
+        right: 50px;
+        top: 10px;
     }
 
         .desktopDevice .actions-wrap .buttons-wrap li {
+            background-color: transparent;
+            border: 0;
             display: inline-block;
         }
 
