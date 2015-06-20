@@ -4,6 +4,7 @@
 
 body {
     margin: 0;
+    font: 11px Segoe UI;
 }
 
 .body-wrap {
@@ -28,7 +29,6 @@ body {
         text-align: center;
         overflow: hidden;
         display: inline-block;
-        font-size: 15px;
         color: white;
         box-sizing: border-box;
     }
@@ -44,7 +44,7 @@ body {
             cursor: pointer;
         }
 
-.header-wrap .buttons-list#confirm-list {
+.header-wrap .buttons-list#confirmList {
     display: none;
 }
 
@@ -602,7 +602,6 @@ body {
 .touch .buttons-list li {
     width: 60px;
     height: 60px;
-    font-size: 14px;
 }
 
 .touch .icon {
