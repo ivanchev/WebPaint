@@ -10,7 +10,7 @@ require(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/ca
     View, FileIO, Filters, Transforms, Cache, Zoom, Crop, Color, Slider) {
     // App logic
 
-    $(".body-wrap").addClass(View.isTouch() ? "touchDevice" : "desktopDevice");
+    $(".body-wrap").addClass(View.isTouch() ? "touch" : "desktop");
     $(".loading-screen").remove();
 
     //#region Helpers

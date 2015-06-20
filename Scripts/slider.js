@@ -96,9 +96,9 @@
                     '<div class="slider-handle"></div>' +
                 '</div>' +
                 '<div class="buttons-wrap">' +
-                    '<ul class="buttonsList">' +
-                        '<li id="OKButton"><span class="icon iconOK"></span></li>' +
-                        '<li id="CancelButton"><span class="icon iconCancel"></span></li>' +
+                    '<ul class="buttons-list">' +
+                        '<li id="OKButton"><span class="icon icon-ok"></span></li>' +
+                        '<li id="CancelButton"><span class="icon icon-cancel"></span></li>' +
                     '</ul>' +
                 '</div>' +
             '</div>').appendTo($(".content-wrap"));

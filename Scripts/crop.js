@@ -41,9 +41,9 @@
 
         actionsWrap = $('<div class="actions-wrap">' +
                 '<div class="buttons-wrap">' +
-                    '<ul class="buttonsList">' +
-                        '<li id="cropOK"><span class="icon iconOK"></span></li>' +
-                        '<li id="cropCancel"><span class="icon iconCancel"></span></li>' +
+                    '<ul class="buttons-list">' +
+                        '<li id="cropOK"><span class="icon icon-ok"></span></li>' +
+                        '<li id="cropCancel"><span class="icon icon-cancel"></span></li>' +
                     '</ul>' +
                 '</div>' +
             '</div>')

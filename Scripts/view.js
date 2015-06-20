@@ -1,5 +1,4 @@
 ﻿define(function() {
-    var container;
     var toolbar;
     var toolbarPrimary;
     var toolbarSecondary;
@@ -10,8 +9,7 @@
         return 'ontouchstart' in window;
     }
 
-    function init(cntr) {
-        container = cntr;
+    function init(container) {
         toolbar = container.find(".toolbar-wrap");
         header = container.find(".header-wrap");
         toolbarPrimary = toolbar.find(".toolbar-primary-wrap");

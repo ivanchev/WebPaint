@@ -15,14 +15,14 @@ body {
     position: relative;
 }
 
-.buttonsList {
+.buttons-list {
     list-style: none;
     padding: 0;
     margin: 0;
     height: 100%;
 }
 
-    .buttonsList li {
+    .buttons-list li {
         cursor: pointer;
         position: relative;
         text-align: center;
@@ -33,7 +33,7 @@ body {
         box-sizing: border-box;
     }
 
-        .buttonsList li#uploadButton input {
+        .buttons-list li#uploadButton input {
             width: 100%;
             height: 100%;
             position: absolute;
@@ -44,7 +44,7 @@ body {
             cursor: pointer;
         }
 
-.header-wrap .buttonsList#confirmList {
+.header-wrap .buttons-list#confirm-list {
     display: none;
 }
 
@@ -129,147 +129,148 @@ body {
     background-repeat: no-repeat;
 }
 
-.desktopDevice .buttonsList li:hover .icon {
+.desktop .buttons-list li:hover .icon,
+.desktop .toolbar-secondary-wrap .buttons-list li.selected .icon {
     background-position-y: -48px;
 }
-.desktopDevice .buttonsList li.selected:hover .icon {
+.desktop .toolbar-primary-wrap .buttons-list li.selected:hover .icon {
     background-position-y: 0px;
 }
 
 /* Icons */
-.iconDownload {
+.icon-download {
     background-position-x: -0px;
 }
 
-.iconUpload {
+.icon-upload {
     background-position-x: -48px;
 }
 
-.iconUndo {
+.icon-undo {
     background-position-x: -96px;
 }
 
-.iconRedo {
+.icon-redo {
     background-position-x: -144px;
 }
 
-.iconReset {
+.icon-reset {
     background-position-x: -192px;
 }
 
-.iconZoomOut {
+.icon-zoomOut {
     background-position-x: -240px;
 }
 
-.iconZoomIn {
+.icon-zoomIn {
     background-position-x: -288px;
 }
 
-.iconZoomFit {
+.icon-zoomFit {
     background-position-x: -336px;
 }
 
-.iconTransform {
+.icon-transform {
     background-position-x: -384px;
 }
 
-.iconCrop {
+.icon-crop {
     background-position-x: -432px;
 }
 
-.iconFilter {
+.icon-filter {
     background-position-x: -480px;
 }
 
-.iconColor {
+.icon-color {
     background-position-x: -528px;
 }
 
-.iconFlipHorizontal {
+.icon-flip-horizontal {
     background-position-x: -576px;
 }
 
-.iconflipVertical {
+.icon-flip-vertical {
     background-position-x: -624px;
 }
 
-.iconRotate90 {
+.icon-rotate90 {
     background-position-x: -672px;
 }
 
-.iconRotate180 {
+.icon-rotate180 {
     background-position-x: -720px;
 }
 
-.iconRotate270 {
+.icon-rotate270 {
     background-position-x: -768px;
 }
 
-.iconInvert {
+.icon-invert {
     background-position-x: -816px;
 }
 
-.iconGrayscale {
+.icon-grayscale {
     background-position-x: -864px;
 }
 
-.iconBlur {
+.icon-blur {
     background-position-x: -912px;
 }
 
-.iconSharpen {
+.icon-sharpen {
     background-position-x: -960px;
 }
 
-.iconEmboss {
+.icon-emboss {
     background-position-x: -1008px;
 }
 
-.iconEdge {
+.icon-edge {
     background-position-x: -1056px;
 }
 
-.iconSobel {
+.icon-sobel {
     background-position-x: -1104px;
 }
 
-.iconErode {
+.icon-erode {
     background-position-x: -1152px;
 }
 
-.iconDilate {
+.icon-dilate {
     background-position-x: -1200px;
 }
 
-.iconMedian {
+.icon-median {
     background-position-x: -1248px;
 }
 
-.iconBrightness {
+.icon-brightness {
     background-position-x: -1296px;
 }
 
-.iconContrast {
+.icon-contrast {
     background-position-x: -1344px;
 }
 
-.iconHue {
+.icon-hue {
     background-position-x: -1392px;
 }
 
-.iconSaturation {
+.icon-saturation {
     background-position-x: -1440px;
 }
 
-.iconThreshold {
+.icon-threshold {
     background-position-x: -1488px;
 }
 
-.iconOK {
+.icon-ok {
     background-position-x: -1536px;
 }
 
-.iconCancel {
+.icon-cancel {
     background-position-x: -1584px;
 }
 
@@ -327,7 +328,17 @@ body {
 }
 
 /* Desktop */
-.desktopDevice .header-wrap .header-logo {
+.desktop.body-wrap {
+    min-width: 920px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.desktop .header-wrap .header-logo {
     background-color: #06070B;
     width: 200px;
     height: 100%;
@@ -338,40 +349,48 @@ body {
     line-height: 80px;
 }
 
-.desktopDevice .header-wrap {
+.desktop .header-wrap {
     height: 80px;
     background-color: #040B13;
 }
 
-    .desktopDevice .header-wrap .buttonsList {
+    .desktop .header-wrap .buttons-list {
         float: left;
     }
 
-        .desktopDevice .header-wrap .buttonsList#zoomList {
+        .desktop .header-wrap .buttons-list#zoomList {
             float: right;
         }
+        .desktop .header-wrap .buttons-list li.no-background-small {
+            width: 50px;
+            line-height: 80px;
+            background-color: transparent;
+        }
+        .desktop .header-wrap .buttons-list li.no-background-small:hover {
+            background-color: transparent;
+        }
 
-.desktopDevice .buttonsList li {
+.desktop .buttons-list li {
     background-color: #10191E;
     width: 80px;
     height: 80px;
     border-right: 1px solid #040B13;
 }
 
-.desktopDevice .header-wrap .buttonsList li:hover {
+.desktop .header-wrap .buttons-list li:hover {
     background-color: #252C36;
 }
 
 
-.desktopDevice .toolbar-wrap .buttonsList li {
+.desktop .toolbar-wrap .buttons-list li {
     display: block;
     border-right: 0;
     width: 100px;
     border-bottom: 1px solid #252C36;
 }
 
-.desktopDevice .toolbar-primary-wrap,
-.desktopDevice .toolbar-secondary-wrap {
+.desktop .toolbar-primary-wrap,
+.desktop .toolbar-secondary-wrap {
     display: inline-block;
     width: 100px;
     height: 100%;
@@ -379,60 +398,60 @@ body {
     float: left;
 }
 
-.desktopDevice .toolbar-primary-wrap {
+.desktop .toolbar-primary-wrap {
     background-color: #151E27;
 }
 
-    .desktopDevice .toolbar-primary-wrap .buttonsList li {
+    .desktop .toolbar-primary-wrap .buttons-list li {
         background-color: #151E27;
         height: 100px;
         line-height: 58px;
     }
 
-        .desktopDevice .toolbar-primary-wrap .buttonsList li .bar {
+        .desktop .toolbar-primary-wrap .buttons-list li .bar {
             position: absolute;
             width: 10px;
             height: 100%;
             left: 0;
         }
 
-.desktopDevice .toolbar-secondary-wrap {
+.desktop .toolbar-secondary-wrap {
     background-color: #252C36;
 }
 
-    .desktopDevice .toolbar-secondary-wrap .buttonsList li {
+    .desktop .toolbar-secondary-wrap .buttons-list li {
         background-color: #252C36;
         height: 80px;
         border: 0;
         line-height: 50px;
     }
 
-.desktopDevice li#transformButton.selected,
-.desktopDevice li#transformButton:active,
-.desktopDevice li#transformButton .bar {
+.desktop li#transformButton.selected,
+.desktop li#transformButton:active,
+.desktop li#transformButton .bar {
     background-color: #4C9AFE;
 }
 
-.desktopDevice li#cropButton.selected,
-.desktopDevice li#cropButton:active,
-.desktopDevice li#cropButton .bar {
+.desktop li#cropButton.selected,
+.desktop li#cropButton:active,
+.desktop li#cropButton .bar {
     background-color: #95F73E;
 }
 
-.desktopDevice li#filterButton.selected,
-.desktopDevice li#filterButton:active,
-.desktopDevice li#filterButton .bar {
+.desktop li#filterButton.selected,
+.desktop li#filterButton:active,
+.desktop li#filterButton .bar {
     background-color: #F83D68;
 }
 
-.desktopDevice li#colorButton.selected,
-.desktopDevice li#colorButton:active,
-.desktopDevice li#colorButton .bar {
+.desktop li#colorButton.selected,
+.desktop li#colorButton:active,
+.desktop li#colorButton .bar {
     background-color: #FCAF15;
 }
 
 
-.desktopDevice .actions-wrap {
+.desktop .actions-wrap {
     height: 100px;
     z-index: 2;
     position: absolute;
@@ -443,21 +462,21 @@ body {
     background-color: rgba(25, 32, 42, 0.8);
 }
 
-    .desktopDevice .actions-wrap .slider-wrap {
+    .desktop .actions-wrap .slider-wrap {
         float: left;
         width: 300px;
         height: 100%;
         position: relative;
     }
 
-    .desktopDevice .actions-wrap .buttons-wrap {
+    .desktop .actions-wrap .buttons-wrap {
         float: right;
         position: relative;
         right: 50px;
         top: 10px;
     }
 
-        .desktopDevice .actions-wrap .buttons-wrap li {
+        .desktop .actions-wrap .buttons-wrap li {
             background-color: transparent;
             border: 0;
             display: inline-block;
@@ -465,54 +484,54 @@ body {
 
 
 /* Touch */
-.touchDevice .header-wrap .header-logo {
+.touch .header-wrap .header-logo {
     display: none;
 }
 
-.touchDevice .header-wrap {
+.touch .header-wrap {
     background-color: transparent;
     background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
     z-index: 2;
     text-align: center;
 }
 
-.touchDevice .buttonsList {
+.touch .buttons-list {
     white-space: nowrap;
     display: inline-block;
 }
 
-.touchDevice .header-wrap #zoomList {
+.touch .header-wrap #zoomList {
     display: none;
 }
 
-.touchDevice .actions-wrap .buttonsList {
+.touch .actions-wrap .buttons-list {
     display: block;
 }
 
-.touchDevice #CancelButton,
-.touchDevice #restoreButton {
+.touch #CancelButton,
+.touch #restoreButton {
     display: block;
     float: left;
 }
 
-.touchDevice #OKButton,
-.touchDevice #applyButton {
+.touch #OKButton,
+.touch #applyButton {
     display: block;
     float: right;
 }
 
-.touchDevice .content-wrap {
+.touch .content-wrap {
     top: 0;
     overflow: hidden;
 }
 
-.touchDevice .canvas-wrap {
+.touch .canvas-wrap {
     left: 0;
     width: 100%;
     overflow: scroll;
 }
 
-.touchDevice .toolbar-wrap {
+.touch .toolbar-wrap {
     width: 100%;
     bottom: 0;
     z-index: 2;
@@ -521,100 +540,103 @@ body {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
 
-    .touchDevice .toolbar-wrap .toolbar-primary-wrap,
-    .touchDevice .toolbar-wrap .toolbar-secondary-wrap {
+    .touch .toolbar-wrap .toolbar-primary-wrap,
+    .touch .toolbar-wrap .toolbar-secondary-wrap {
         text-align: center;
     }
 
-    .touchDevice .toolbar-wrap .toolbar-secondary-wrap {
+    .touch .toolbar-wrap .toolbar-secondary-wrap {
         position: relative;
         overflow-x: auto;
     }
 
 
-.touchDevice .actions-wrap {
+.touch .actions-wrap {
     position: initial;
     text-align: center;
 }
 
-.touchDevice .slider-wrap {
+.touch .slider-wrap {
     position: absolute;
 }
 
-.touchDevice .actions-wrap .buttons-wrap {
+.touch .actions-wrap .buttons-wrap {
     position: absolute;
     width: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 
-.touchDevice .crop-dot {
+.touch .crop-dot {
     width: 30px;
     height: 30px;
     border-radius: 15px;
 }
 
-.touchDevice .crop-dot-TL {
+.touch .crop-dot-TL {
     margin-top: -15px;
     margin-left: -15px;
 }
 
-.touchDevice .crop-dot-TR {
+.touch .crop-dot-TR {
     margin-top: -15px;
     margin-right: -15px;
 }
 
-.touchDevice .crop-dot-BL {
+.touch .crop-dot-BL {
     margin-bottom: -15px;
     margin-left: -15px;
 }
 
-.touchDevice .crop-dot-BR {
+.touch .crop-dot-BR {
     margin-bottom: -15px;
     margin-right: -15px;
 }
 
 
 
-.touchDevice .header-wrap {
+.touch .header-wrap {
     height: 60px;
 }
 
-.touchDevice .buttonsList li {
+.touch .buttons-list li {
     width: 60px;
     height: 60px;
-    line-height: 50px;
     font-size: 14px;
 }
 
-.touchDevice .icon {
-    top: 17px;
+.touch .icon {
+    top: 6px;
 }
 
-.touchDevice .toolbar-wrap {
+.touch .toolbar-primary-wrap .icon {
+    top: 0;
+}
+
+.touch .toolbar-wrap {
     height: 70px;
 }
 
-    .touchDevice .toolbar-wrap .buttonsList li {
+    .touch .toolbar-wrap .buttons-list li {
         width: 70px;
         height: 70px;
-        line-height: 60px;
+        line-height: 22px;
     }
 
-.touchDevice .slider-wrap {
+.touch .slider-wrap {
     bottom: 70px;
     height: 70px;
     width: 300px;
 }
 
-    .touchDevice .slider-wrap .slider-line {
+    .touch .slider-wrap .slider-line {
         top: 33px;
     }
 
-    .touchDevice .slider-wrap .slider-handle {
+    .touch .slider-wrap .slider-handle {
         top: 31px;
     }
 
-.touchDevice .actions-wrap .buttons-wrap {
+.touch .actions-wrap .buttons-wrap {
     height: 60px;
 }
