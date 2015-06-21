@@ -21,6 +21,11 @@
         var memContext = memCanvas.getContext("2d");
         memContext.drawImage(canvas, 0, 0);
 
+        var updateImage = function(offset) {
+            var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
+            changeCallback(offset, imageData);
+        };
+
         slider.on("click", "#OKButton", function() {
                 hide();
 
@@ -45,7 +50,7 @@
                     var handle = this;
                     var x = isTouch ? e.originalEvent.touches[0].clientX : e.clientX;
                     var startX = parseInt($(handle).css("left"), 10);
-                    var deltaX;
+                    var deltaX = 0;
 
                     $(document)
                         .on(MOVE + ".slider", function(e) {
@@ -59,17 +64,17 @@
                             $(handle).css("left", 100 + deltaX);
 
                             if (!isTouch) {
-                                var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
-                                changeCallback(deltaX, imageData);
+                                updateImage(deltaX);
                             }
                         })
                         .on(END + ".slider", function(e) {
                             $(document).off(".slider");
 
-                            var imageData = memContext.getImageData(0, 0, memCanvas.width, memCanvas.height);
-                            changeCallback(deltaX, imageData);
+                            updateImage(deltaX);
                         });
                 });
+
+            updateImage(0);
         }
     }
 
