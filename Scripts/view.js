@@ -18,7 +18,7 @@
 
     function transition(toobarCallback, headerCallback) {
         toolbar.animate({
-            bottom: "-60px"
+            bottom: "-80px"
         }, animationDuration, function() {
             toobarCallback();
 
@@ -28,7 +28,7 @@
         });
 
         header.animate({
-            top: "-60px"
+            top: "-80px"
         }, animationDuration, function() {
             headerCallback();
 

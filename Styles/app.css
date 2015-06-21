@@ -130,7 +130,8 @@ body {
 }
 
 .desktop .buttons-list li:hover .icon,
-.desktop .toolbar-secondary-wrap .buttons-list li.selected .icon {
+.desktop .toolbar-secondary-wrap .buttons-list li.selected .icon,
+.touch .toolbar-secondary-wrap .icon {
     background-position-y: -48px;
 }
 .desktop .toolbar-primary-wrap .buttons-list li.selected:hover .icon {
@@ -508,12 +509,14 @@ body {
     display: block;
 }
 
+.touch #cropCancel,
 .touch #CancelButton,
 .touch #restoreButton {
     display: block;
     float: left;
 }
 
+.touch #cropOK,
 .touch #OKButton,
 .touch #applyButton {
     display: block;
@@ -595,13 +598,25 @@ body {
 
 
 
-.touch .header-wrap {
+.touch .header-wrap,
+.touch .actions-wrap .buttons-wrap {
+    height: 80px;
+}
+
+.touch .actions-wrap .buttons-list,
+.touch .header-wrap .buttons-list {
     height: 60px;
 }
 
-.touch .buttons-list li {
+.touch .actions-wrap .buttons-list li,
+.touch .header-wrap .buttons-list li {
     width: 60px;
     height: 60px;
+}
+
+.touch ul#confirmList,
+.touch .actions-wrap ul.buttons-list{
+    padding: 10px;
 }
 
 .touch .icon {
@@ -613,13 +628,18 @@ body {
 }
 
 .touch .toolbar-wrap {
-    height: 70px;
+    height: 80px;
+}
+
+.toolbar-primary-wrap,
+.toolbar-secondary-wrap {
+    height: 100%;
 }
 
     .touch .toolbar-wrap .buttons-list li {
         width: 70px;
-        height: 70px;
-        line-height: 22px;
+        height: 80px;
+        white-space: normal;
     }
 
 .touch .slider-wrap {
@@ -635,7 +655,3 @@ body {
     .touch .slider-wrap .slider-handle {
         top: 31px;
     }
-
-.touch .actions-wrap .buttons-wrap {
-    height: 60px;
-}
