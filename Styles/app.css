@@ -551,6 +551,7 @@ body {
     .touch .toolbar-wrap .toolbar-secondary-wrap {
         position: relative;
         overflow-x: auto;
+        overflow-y: hidden;
     }
 
 
@@ -606,6 +607,8 @@ body {
 .touch .actions-wrap .buttons-list,
 .touch .header-wrap .buttons-list {
     height: 60px;
+    max-width: 730px;
+    margin: auto;
 }
 
 .touch .actions-wrap .buttons-list li,
@@ -646,6 +649,8 @@ body {
     bottom: 70px;
     height: 70px;
     width: 300px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
     .touch .slider-wrap .slider-line {
