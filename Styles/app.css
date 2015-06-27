@@ -134,145 +134,256 @@ body {
 .touch .toolbar-secondary-wrap .icon {
     background-position-y: -48px;
 }
-.desktop .toolbar-primary-wrap .buttons-list li.selected:hover .icon {
-    background-position-y: 0px;
-}
 
 /* Icons */
 .icon-download {
-    background-position-x: -0px;
+    background-position: -0px 0;
 }
 
 .icon-upload {
-    background-position-x: -48px;
+    background-position: -48px 0;
 }
 
 .icon-undo {
-    background-position-x: -96px;
+    background-position: -96px 0;
 }
 
 .icon-redo {
-    background-position-x: -144px;
+    background-position: -144px 0;
 }
 
 .icon-reset {
-    background-position-x: -192px;
+    background-position: -192px 0;
 }
 
 .icon-zoomOut {
-    background-position-x: -240px;
+    background-position: -240px 0;
+}
+.desktop li:hover .icon-zoomOut {
+    background-position: -240px -48px;
 }
 
 .icon-zoomIn {
-    background-position-x: -288px;
+    background-position: -288px 0;
+}
+.desktop li:hover .icon-zoomIn {
+    background-position: -288px -48px;
 }
 
 .icon-zoomFit {
-    background-position-x: -336px;
+    background-position: -336px 0;
 }
 
-.icon-transform {
-    background-position-x: -384px;
+.icon-transform,
+.desktop li.selected:hover .icon-transform {
+    background-position: -384px 0;
+}
+.desktop li:hover .icon-transform {
+    background-position: -384px -48px;
 }
 
-.icon-crop {
-    background-position-x: -432px;
+.icon-crop,
+.desktop li.selected:hover .icon-crop  {
+    background-position: -432px 0;
+}
+.desktop li:hover .icon-crop {
+    background-position: -432px -48px;
 }
 
-.icon-filter {
-    background-position-x: -480px;
+.icon-filter,
+.desktop li.selected:hover .icon-filter {
+    background-position: -480px 0;
+}
+.desktop li:hover .icon-filter {
+    background-position: -480px -48px;
 }
 
-.icon-color {
-    background-position-x: -528px;
+.icon-color,
+.desktop li.selected:hover .icon-color {
+    background-position: -528px 0;
 }
+.desktop li:hover .icon-color {
+    background-position: -528px -48px;
+}
+
 
 .icon-flip-horizontal {
-    background-position-x: -576px;
+    background-position: -576px 0;
+}
+.touch .icon-flip-horizontal,
+.desktop li:hover .icon-flip-horizontal {
+    background-position: -576px -48px;
 }
 
 .icon-flip-vertical {
-    background-position-x: -624px;
+    background-position: -624px 0;
+}
+.touch .icon-flip-vertical,
+.desktop li:hover .icon-flip-vertical {
+    background-position: -624px -48px;
 }
 
 .icon-rotate90 {
-    background-position-x: -672px;
+    background-position: -672px 0;
+}
+.touch .icon-rotate90,
+.desktop li:hover .icon-rotate90 {
+    background-position: -672px -48px;
 }
 
 .icon-rotate180 {
-    background-position-x: -720px;
+    background-position: -720px 0;
+}
+.touch .icon-rotate180,
+.desktop li:hover .icon-rotate180 {
+    background-position: -720px -48px;
 }
 
 .icon-rotate270 {
-    background-position-x: -768px;
+    background-position: -768px 0;
+}
+.touch .icon-rotate270,
+.desktop li:hover .icon-rotate270 {
+    background-position: -768px -48px;
 }
 
 .icon-invert {
-    background-position-x: -816px;
+    background-position: -816px 0;
+}
+.touch .icon-invert,
+.desktop li:hover .icon-invert {
+    background-position: -816px -48px;
 }
 
 .icon-grayscale {
-    background-position-x: -864px;
+    background-position: -864px 0;
+}
+.touch .icon-grayscale,
+.desktop li:hover .icon-grayscale {
+    background-position: -864px -48px;
 }
 
 .icon-blur {
-    background-position-x: -912px;
+    background-position: -912px 0;
+}
+.touch .icon-blur,
+.desktop li:hover .icon-blur {
+    background-position: -912px -48px;
 }
 
 .icon-sharpen {
-    background-position-x: -960px;
+    background-position: -960px 0;
+}
+.touch .icon-sharpen,
+.desktop li:hover .icon-sharpen {
+    background-position: -960px -48px;
 }
 
 .icon-emboss {
-    background-position-x: -1008px;
+    background-position: -1008px 0;
+}
+.touch .icon-emboss,
+.desktop li:hover .icon-emboss {
+    background-position: -1008px -48px;
 }
 
 .icon-edge {
-    background-position-x: -1056px;
+    background-position: -1056px 0;
+}
+.touch .icon-edge,
+.desktop li:hover .icon-edge {
+    background-position: -1056px -48px;
 }
 
 .icon-sobel {
-    background-position-x: -1104px;
+    background-position: -1104px 0;
+}
+.touch .icon-sobel,
+.desktop li:hover .icon-sobel {
+    background-position: -1104px -48px;
 }
 
 .icon-erode {
-    background-position-x: -1152px;
+    background-position: -1152px 0;
+}
+.touch .icon-erode,
+.desktop li:hover .icon-erode {
+    background-position: -1152px -48px;
 }
 
 .icon-dilate {
-    background-position-x: -1200px;
+    background-position: -1200px 0;
+}
+.touch .icon-dilate,
+.desktop li:hover .icon-dilate {
+    background-position: -1200px -48px;
 }
 
 .icon-median {
-    background-position-x: -1248px;
+    background-position: -1248px 0;
+}
+.touch .icon-median,
+.desktop li:hover .icon-median {
+    background-position: -1248px -48px;
 }
 
 .icon-brightness {
-    background-position-x: -1296px;
+    background-position: -1296px 0;
+}
+.touch .icon-brightness,
+.desktop li:hover .icon-brightness,
+.desktop li.selected .icon-brightness {
+    background-position: -1296px -48px;
 }
 
 .icon-contrast {
-    background-position-x: -1344px;
+    background-position: -1344px 0;
+}
+.touch .icon-contrast,
+.desktop li:hover .icon-contrast,
+.desktop li.selected .icon-contrast {
+    background-position: -1344px -48px;
 }
 
 .icon-hue {
-    background-position-x: -1392px;
+    background-position: -1392px 0;
+}
+.touch .icon-hue,
+.desktop li:hover .icon-hue,
+.desktop li.selected .icon-hue {
+    background-position: -1392px -48px;
 }
 
 .icon-saturation {
-    background-position-x: -1440px;
+    background-position: -1440px 0;
+}
+.touch .icon-saturation,
+.desktop li:hover .icon-saturation,
+.desktop li.selected .icon-saturation {
+    background-position: -1440px -48px;
 }
 
 .icon-threshold {
-    background-position-x: -1488px;
+    background-position: -1488px 0;
+}
+.touch .icon-threshold,
+.desktop li:hover .icon-threshold,
+.desktop li.selected .icon-threshold {
+    background-position: -1488px -48px;
 }
 
 .icon-ok {
-    background-position-x: -1536px;
+    background-position: -1536px 0;
+}
+.desktop li:hover .icon-ok {
+    background-position: -1536px -48px;
 }
 
 .icon-cancel {
-    background-position-x: -1584px;
+    background-position: -1584px 0;
+}
+.desktop li:hover .icon-cancel {
+    background-position: -1584px -48px;
 }
 
 /* Crop Box*/
