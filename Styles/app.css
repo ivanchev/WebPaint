@@ -599,7 +599,7 @@ body {
 @media screen and (max-height: 900px) {
     .desktop .toolbar-secondary-wrap .buttons-list li {
         height: 60px;
-        line-height: initial;
+        line-height: normal;
     }
     .desktop .toolbar-secondary-wrap .buttons-list li .icon {
         top: 0px;
