@@ -238,15 +238,28 @@ require(["view", "fileIO", "filters/filters", "transforms/transforms", 'cache/ca
     //#region Crop
 
     function crop() {
-        if ($(".canvas-wrap").width() < $(".zoom-wrap").width()) {
+        var canvasWrap = $(".canvas-wrap");
+
+        if (View.isTouch()) {
+            canvasWrap.css({ "top": "80px" });
+        } else {
+            canvasWrap.css({ "bottom": "100px" });
+        }
+
+        if (canvasWrap.width() < $(".zoom-wrap").width() ||
+            canvasWrap.height() < $(".zoom-wrap").height()) {
             Zoom.fitZoom();
         }
 
         function restore() {
             if (View.isTouch()) {
                 View.restore();
+
+                canvasWrap.css({ "top": "0" });
             } else {
                 $("#cropButton").removeClass("selected");
+
+                canvasWrap.css({ "bottom": "0" });
             }
         }
 

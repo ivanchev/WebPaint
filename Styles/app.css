@@ -84,7 +84,8 @@ body {
 
 .canvas-wrap {
     position: absolute;
-    height: 100%;
+    top: 0;
+    bottom: 0;
     left: 200px;
     right: 0;
     overflow: hidden;
@@ -92,6 +93,11 @@ body {
     -moz-transform-style: preserve-3d;
     transform-style: preserve-3d;
 }
+
+    .canvas-wrap .position-wrap {
+        position: relative;
+        height: 100%;
+    }
 
     .canvas-wrap .zoom-wrap {
         position: relative;
