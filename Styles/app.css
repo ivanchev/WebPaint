@@ -318,19 +318,19 @@ body {
 }
 
 .icon-dilate {
-    background-position: -1200px 0;
+    background-position: -1248px 0;
 }
 .touch .icon-dilate,
 .desktop li:hover .icon-dilate {
-    background-position: -1200px -48px;
+    background-position: -1248px -48px;
 }
 
 .icon-median {
-    background-position: -1248px 0;
+    background-position: -1200px 0;
 }
 .touch .icon-median,
 .desktop li:hover .icon-median {
-    background-position: -1248px -48px;
+    background-position: -1200px -48px;
 }
 
 .icon-brightness {
