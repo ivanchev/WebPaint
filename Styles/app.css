@@ -330,7 +330,8 @@ body {
 
 /* Desktop */
 .desktop.body-wrap {
-    min-width: 920px;
+    min-width: 860px;
+    min-height: 700px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -484,6 +485,16 @@ body {
         }
 
 
+@media screen and (max-height: 900px) {
+    .desktop .toolbar-secondary-wrap .buttons-list li {
+        height: 60px;
+        line-height: initial;
+    }
+    .desktop .toolbar-secondary-wrap .buttons-list li .icon {
+        top: 0px;
+    }
+}
+
 /* Touch */
 .touch .header-wrap .header-logo {
     display: none;
@@ -553,7 +564,6 @@ body {
         overflow-x: auto;
         overflow-y: hidden;
     }
-
 
 .touch .actions-wrap {
     position: initial;
